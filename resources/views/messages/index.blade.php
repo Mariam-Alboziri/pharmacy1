@@ -10,7 +10,7 @@
                 <thead>
                         <th>id</th>
                         <th>name</th>
-                        <th>phone</th>
+                        <th>last name</th>
                         <th>Message</th>
                         <th>received at</th>
 
@@ -20,11 +20,11 @@
                     @foreach ($messages as $message)
                     <tr>
                         {{-- <td>{{$message->id}}</td> --}}
-                       <td>{{$message->id}}</td>
-                        <td><a href="/admin/messages/{{$message->id}}">{{$message->name}}</a></td>
-                        <td>{{$message->name}}</td>
-                        <td>{{$message->phone}}</td>
-                        <td>{{$message->content}}</td>
+                       {{-- <td>{{$message->id}}</td> --}}
+                        <td><a href="/admin/messages/{{$message->id}}">{{$message->id}}</a></td>
+                        <td>{{$message->c_fname}}</td>
+                        <td>{{$message->c_lname}}</td>
+                        <td>{{$message->c_message}}</td>
                         <td>{{$message->created_at}}</td>
                         {{-- <td class="text-center row">
                             <div class="btn-group" role="group">

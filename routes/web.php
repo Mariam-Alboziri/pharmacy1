@@ -32,7 +32,6 @@ Route::post('/contact-us',function(Request $request){
         'c_fname' => 'required|string|min:3|max:255',
         'c_lname' => 'required|string|min:3|max:255',
         'c_email' => 'required|email',
-        // 'phone' => 'required|starts_with:9639|digits_between:12,12',
         'c_subject' => 'required|string|min:3',
         'c_message' => 'required|string|min:3',
     ]);
