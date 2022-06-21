@@ -3,8 +3,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 mb-0">
-          <a href="/">Home</a> <span class="mx-2 mb-0">/</span>
-          <a class="text-black" href="/contact-us">Contact</a>
+          <a href="{{route('home')}}">Home</a> <span class="mx-2 mb-0">/</span>
+          <a class="text-black" href="{{route('contact')}}">Contact</a>
         </div>
       </div>
     </div>
@@ -22,7 +22,7 @@
 
         <div class="col-md-12">
 
-  <form action="/contact-us" method="post">
+  <form action="{{route('contact')}}" method="post">
 @csrf
     <div class="p-3 p-lg-5 border">
       <div class="form-group row">

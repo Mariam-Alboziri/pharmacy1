@@ -21,7 +21,7 @@
                     <tr>
                         {{-- <td>{{$message->id}}</td> --}}
                        {{-- <td>{{$message->id}}</td> --}}
-                        <td><a href="/admin/messages/{{$message->id}}">{{$message->id}}</a></td>
+                        <td><a href="{{route('messages.show',$message)}}">{{$message->id}}</a></td>
                         <td>{{$message->c_fname}}</td>
                         <td>{{$message->c_lname}}</td>
                         <td>{{$message->c_message}}</td>
