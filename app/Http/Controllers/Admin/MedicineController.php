@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Medicine;
 use Illuminate\Http\Request;
 
+
 class MedicineController extends Controller
 {
     /**
@@ -15,7 +16,8 @@ class MedicineController extends Controller
      */
     public function index()
     {
-        //
+        $medicines=Medicine::all();
+        return view('admin.medicines.index',compact('medicines'));
     }
 
     /**
@@ -65,7 +67,7 @@ class MedicineController extends Controller
      */
     public function show(Medicine $medicine)
     {
-        return view('medicines.show',compact($medicine));
+        return view('medicines.show',compact('medicine'));
     }
 
     /**
@@ -76,7 +78,7 @@ class MedicineController extends Controller
      */
     public function edit(Medicine $medicine)
     {
-        //
+        return view('admin.medicines.edit',compact('medicine'));
     }
 
     /**
@@ -88,7 +90,23 @@ class MedicineController extends Controller
      */
     public function update(Request $request, Medicine $medicine)
     {
-        //
+        $request->validate([
+            'name'        =>'required',
+            'type'        =>'required',
+            'brand'       =>'required',
+            'price'       =>'required|numeric|min:100',
+            'description' =>'required',
+            ]);
+
+            $medicine->name=$request->name;
+            $medicine->type =$request->type;
+            $medicine->brand =$request->brand;
+            $medicine->price =$request->price;
+            $medicine->description =$request->description;
+            $medicine->save();
+
+            return redirect()->route('medicines.index');
+
     }
 
     /**
@@ -99,6 +117,7 @@ class MedicineController extends Controller
      */
     public function destroy(Medicine $medicine)
     {
-        //
+        $medicine->delete();
+        return redirect()->route('medicines.index');
     }
 }

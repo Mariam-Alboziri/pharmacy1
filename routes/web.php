@@ -33,6 +33,8 @@ Route::get('/admin/messages/{message}', [MessageController::class,'show'])->name
 Route::get('/admin/medicines/create',[MedicineController::class,'create'])->name('medicines.create');
 Route::get('/admin/medicines', [MedicineController::class,'index'])->name('medicines.index');
 Route::post('/admin/medicines',[MedicineController::class,'store'])->name('medicines.store');
-
+Route::get('/admin/medicines/{medicine}/edit',[MedicineController::class,'edit'])->name('medicines.edit');
+Route::put('/admin/medicines/{medicine}',[MedicineController::class,'update'])->name('medicines.update');
+Route::delete('/admin/medicines/{medicine}',[MedicineController::class,'destroy'])->name('medicines.destroy');
 
 
