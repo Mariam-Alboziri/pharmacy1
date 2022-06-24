@@ -31,18 +31,19 @@ Route::view('/contact-us','pages.contact')->name('contact');
 
 Route::post('/contact-us',[MessageController::class,'store'])->name('messages.store');
 
-Route::get('/admin/messages', [MessageController::class,'index'])->name('messages.index');
-Route::get('/admin/messages/{message}', [MessageController::class,'show'])->name('messages.show');
+Route::prefix('admin')->group(function () {
 
+Route::get('messages', [MessageController::class,'index'])->name('messages.index');
+Route::get('messages/{message}', [MessageController::class,'show'])->name('messages.show');
 
-Route::get('/admin/medicines/create',[MedicineController::class,'create'])->name('medicines.create');
-Route::get('/admin/medicines',[MedicineController::class,'show'])->name('medicines.show');
-Route::get('/admin/medicines', [MedicineController::class,'index'])->name('medicines.index');
-Route::post('/admin/medicines',[MedicineController::class,'store'])->name('medicines.store');
-Route::get('/admin/medicines/{medicine}/edit',[MedicineController::class,'edit'])->name('medicines.edit');
-Route::put('/admin/medicines/{medicine}',[MedicineController::class,'update'])->name('medicines.update');
-Route::delete('/admin/medicines/{medicine}',[MedicineController::class,'destroy'])->name('medicines.destroy');
+Route::get('medicines/create',[MedicineController::class,'create'])->name('medicines.create');
+Route::get('medicines',[MedicineController::class,'show'])->name('medicines.show');
+Route::get('medicines', [MedicineController::class,'index'])->name('medicines.index');
+Route::post('medicines',[MedicineController::class,'store'])->name('medicines.store');
+Route::get('medicines/{medicine}/edit',[MedicineController::class,'edit'])->name('medicines.edit');
+Route::put('medicines/{medicine}',[MedicineController::class,'update'])->name('medicines.update');
+Route::delete('medicines/{medicine}',[MedicineController::class,'destroy'])->name('medicines.destroy');
 
-//Route::resource('admin/categories',CategoryController::class);
+Route::resource('categories',CategoryController::class);
 
-
+});

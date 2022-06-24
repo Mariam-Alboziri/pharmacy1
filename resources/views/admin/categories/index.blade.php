@@ -9,10 +9,17 @@
                     <div class="col-md-4">
                         <div class="card">
                             <div class="card-body">
+                                <a href="{{route('categories.edit',$category)}}">
                                 <h3 class="card-title">{{ $category->name }}</h3>
                                 <p class="card-text">Price: {{ $category->price }}</p>
                             </div>
                         </div>
+                        <h5><form action="{{route('categories.destroy',$category)}}" method="POST">
+                            @csrf
+                            @method('DELETE') <button type="submit">Delete</button>
+
+                        </form></h5>
+                  </a>
                     </div>
                     @empty
                     <div class="col">
