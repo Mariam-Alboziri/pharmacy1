@@ -23,7 +23,7 @@
                 <div class="main-nav d-none d-lg-block">
                     <nav class="site-navigation text-right text-md-center" role="navigation">
                         <ul class="site-menu js-clone-nav d-none d-lg-block">
-                            <li class="active"><a href="index.html">Home</a></li>
+                            <li class="active"><a href="{{route('home')}}">Home</a></li>
                             <li><a href="shop.html">Store</a></li>
                             <li class="has-children">
                                 <a href="#">Products</a>
@@ -44,7 +44,7 @@
                                 </ul>
                             </li>
                             <li><a href="about.html">About</a></li>
-                            <li><a href="/contact-us">Contact</a></li>
+                            <li><a href="{{route('contact')}}">Contact</a></li>
                         </ul>
                     </nav>
                 </div>

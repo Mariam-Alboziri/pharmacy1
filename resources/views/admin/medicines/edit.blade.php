@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Edit medicine |' . $medicine->type . ' ' . $medicine->brand)
+@section('title', 'Edit medicine | ' . $medicine->type . ' ' . $medicine->brand)
 @section('content')
     <section class="section py-10" style="padding-bottom: 50px">
         <div class="container">

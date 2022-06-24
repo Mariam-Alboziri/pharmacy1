@@ -20,11 +20,6 @@
   </a>
 
 
-  {{-- {{$medicine->brand}}
-  {{$medicine->price}}
-  {{$medicine->description}} --}}
-
-
     </div>
     @endforeach
 </div>

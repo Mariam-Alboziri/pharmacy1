@@ -9,8 +9,8 @@
             <table class="table table-hover ">
                 <thead>
                         <th>id</th>
-                        <th>name</th>
-                        <th>last name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Message</th>
                         <th>received at</th>
 
