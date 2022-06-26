@@ -25,6 +25,23 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+
+                <div class="form-group">
+                    <label>Medicine category</label>
+                    <select name="category_id" class="form-control @error('category_id') is-invalid @enderror">
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}"
+                                {{ old('category_id',$medicine->$category_id) == $category->id ? 'selected' : '' }}>{{ $category->name }}
+                                ({{ $category->price }})
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('category_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+
                 <div class="form-group">
                     <label for="type">Type</label>
                     <input type="text" class="form-control @error('type') is-invalid @enderror" id="type"

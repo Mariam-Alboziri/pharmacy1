@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Medicine;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,8 @@ class MedicineController extends Controller
      */
     public function create()
     {
-        return view('admin.medicines.create');
+        $categories=Category::all(['id','name','price']);
+        return view('admin.medicines.create',compact('categories'));
     }
 
     /**
@@ -38,20 +40,24 @@ class MedicineController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+      $validate = $request->validate([
         'name'        =>'required',
         'type'        =>'required',
         'brand'       =>'required',
+        'category_id' =>'required',
         'price'       =>'required|numeric|min:100',
         'description' =>'required',
         ]);
         $medicine=new Medicine;
-        $medicine->name=$request->name;
-        $medicine->type =$request->type;
-        $medicine->brand =$request->brand;
-        $medicine->price =$request->price;
-        $medicine->description =$request->description;
-        $medicine->save();
+        $medicine=Medicine::create($validate);
+
+
+        // $medicine->name=$request->name;
+        // $medicine->type =$request->type;
+        // $medicine->brand =$request->brand;
+        // $medicine->price =$request->price;
+        // $medicine->description =$request->description;
+        // $medicine->save();
 
         return redirect()->route('medicines.index');
 
@@ -77,8 +83,8 @@ class MedicineController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Medicine $medicine)
-    {
-        return view('admin.medicines.edit',compact('medicine'));
+    {    $categories=Category::all(['id','name','price']);
+        return view('admin.medicines.edit',compact('medicine','categories'));
     }
 
     /**
@@ -90,19 +96,21 @@ class MedicineController extends Controller
      */
     public function update(Request $request, Medicine $medicine)
     {
-        $request->validate([
+      $validated=  $request->validate([
             'name'        =>'required',
             'type'        =>'required',
             'brand'       =>'required',
+            'category_id' =>'required',
             'price'       =>'required|numeric|min:100',
             'description' =>'required',
             ]);
 
-            $medicine->name=$request->name;
-            $medicine->type =$request->type;
-            $medicine->brand =$request->brand;
-            $medicine->price =$request->price;
-            $medicine->description =$request->description;
+            $medicine->update($validated);
+            // $medicine->name=$request->name;
+            // $medicine->type =$request->type;
+            // $medicine->brand =$request->brand;
+            // $medicine->price =$request->price;
+            // $medicine->description =$request->description;
             $medicine->save();
 
             return redirect()->route('medicines.index');
