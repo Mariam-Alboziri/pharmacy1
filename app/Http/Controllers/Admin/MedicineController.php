@@ -28,7 +28,7 @@ class MedicineController extends Controller
      */
     public function create()
     {
-        $categories=Category::all(['id','name','price']);
+        $categories=Category::all(['id','name']);
         return view('admin.medicines.create',compact('categories'));
     }
 
@@ -42,7 +42,7 @@ class MedicineController extends Controller
     {
       $validate = $request->validate([
         'name'        =>'required',
-        'type'        =>'required',
+        // 'type'        =>'required',
         'brand'       =>'required',
         'category_id' =>'required',
         'price'       =>'required|numeric|min:100',
@@ -83,7 +83,10 @@ class MedicineController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Medicine $medicine)
-    {    $categories=Category::all(['id','name','price']);
+
+    {
+
+        $categories=Category::all(['id','name']);
         return view('admin.medicines.edit',compact('medicine','categories'));
     }
 
@@ -98,7 +101,7 @@ class MedicineController extends Controller
     {
       $validated=  $request->validate([
             'name'        =>'required',
-            'type'        =>'required',
+            // 'type'        =>'required',
             'brand'       =>'required',
             'category_id' =>'required',
             'price'       =>'required|numeric|min:100',

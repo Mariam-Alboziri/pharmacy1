@@ -9,7 +9,7 @@
   <a href="{{route('medicines.edit',$medicine)}}">
       <h4>
           {{$medicine->name}}
-          {{$medicine->type}}
+          {{-- {{$medicine->type}} --}}
       </h4>
 
           <h5><form action="{{route('medicines.destroy',$medicine)}}" method="POST">

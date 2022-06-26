@@ -11,7 +11,7 @@
                             <div class="card-body">
                                 <a href="{{route('categories.edit',$category)}}">
                                 <h3 class="card-title">{{ $category->name }}</h3>
-                                <p class="card-text">Price: {{ $category->price }}</p>
+                                {{-- <p class="card-text">Price: {{ $category->price }}</p> --}}
                             </div>
                         </div>
                         <h5><form action="{{route('categories.destroy',$category)}}" method="POST">

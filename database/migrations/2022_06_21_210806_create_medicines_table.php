@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('medicines', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('type');
+           // $table->string('type');
             $table->string('brand');
             $table->integer('price');
             $table->text('description');

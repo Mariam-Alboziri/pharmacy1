@@ -34,7 +34,7 @@
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}"
                                 {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}
-                                ({{ $category->price }})
+
                             </option>
                         @endforeach
                     </select>
@@ -45,7 +45,7 @@
 
             {{-- </div> --}}
 
-
+{{--
             <div class="form-group">
                 <label for="type">Type</label>
                 <input type="text" class="form-control @error('type') is-invalid @enderror" id="type" name="type"
@@ -53,7 +53,7 @@
                 @error('type')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
-            </div>
+            </div> --}}
             <div class="form-group">
                 <label for="price">Price</label>
                 <div class="input-group">

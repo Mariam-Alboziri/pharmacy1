@@ -41,7 +41,7 @@ class CategoryController extends Controller
     {
        $validate= $request->validate([
             'name'=>'required|min:3|max:255',
-            'price'=>'required|numeric|min:100',
+            // 'price'=>'required|numeric|min:100',
         ]);
         $category=Category::create($validate);
 
@@ -82,7 +82,7 @@ class CategoryController extends Controller
     {
         $validate= $request->validate([
             'name'=>'required|min:3|max:255',
-            'price'=>'required|numeric|min:100',
+            // 'price'=>'required|numeric|min:100',
         ]);
         $category=Category::create($validate);
 

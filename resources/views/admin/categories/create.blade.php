@@ -15,7 +15,7 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="price">Price</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -27,7 +27,7 @@
                     @error('price')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
-                </div>
+                </div> --}}
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
