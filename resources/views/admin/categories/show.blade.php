@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    @foreach ($medicines as $medicine)
+    @foreach ($category->medicines as $medicine)
 
 
     <div class="col-md-4">
@@ -11,7 +11,7 @@
           {{$medicine->name}}
           {{-- {{$medicine->type}} --}}
       </h4>
-      <h6>{{ $medicine->category->name }}
+      {{-- <h6>{{ $medicine->category->name }} --}}
 
           <h5><form action="{{route('medicines.destroy',$medicine)}}" method="POST">
             @csrf

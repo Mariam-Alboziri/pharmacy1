@@ -10,7 +10,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <a href="{{route('categories.edit',$category)}}">
-                                <h3 class="card-title">{{ $category->name }}</h3>
+                                <h3 class="card-title">{{ $category->name }} ({{ count($category->medicines) }})   </h3>
                                 {{-- <p class="card-text">Price: {{ $category->price }}</p> --}}
                             </div>
                         </div>

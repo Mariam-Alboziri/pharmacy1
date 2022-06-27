@@ -18,7 +18,8 @@ class MedicineController extends Controller
     public function index()
     {
         $medicines=Medicine::all();
-        return view('admin.medicines.index',compact('medicines'));
+        $categories=Category::all(['id','name']);
+        return view('admin.medicines.index',compact('medicines','categories'));
     }
 
     /**
@@ -44,7 +45,7 @@ class MedicineController extends Controller
         'name'        =>'required',
         // 'type'        =>'required',
         'brand'       =>'required',
-        'category_id' =>'required',
+        'category_id' =>'required|numeric|exists:categories,id',
         'price'       =>'required|numeric|min:100',
         'description' =>'required',
         ]);
@@ -114,10 +115,10 @@ class MedicineController extends Controller
             // $medicine->brand =$request->brand;
             // $medicine->price =$request->price;
             // $medicine->description =$request->description;
-            $medicine->save();
+            //$medicine->save();
 
+            // $categories=Category::all(['id','name']);
             return redirect()->route('medicines.index');
-
     }
 
     /**

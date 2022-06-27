@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Edit medicine | ' . $medicine->type . ' ' . $medicine->brand)
+@section('title', 'Edit medicine | ' . ' ' . $medicine->brand)
 @section('content')
     <section class="section py-10" style="padding-bottom: 50px">
         <div class="container">
@@ -31,7 +31,7 @@
                     <select name="category_id" class="form-control @error('category_id') is-invalid @enderror">
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}"
-                                {{ old('category_id',$medicine->$category_id) == $category->id ? 'selected' : '' }}>{{ $category->name }}
+                                {{ old('category_id',$medicine->category_id ) == $category->id ? 'selected' : '' }}>{{ $category->name }}
 
                             </option>
                         @endforeach
@@ -40,6 +40,8 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+
+
 
 {{--
                 <div class="form-group">
