@@ -6,14 +6,14 @@
 
 
     <div class="col-md-4">
-  <a href="{{route('medicines.edit',$medicine)}}">
+  <a href="{{route('admin.medicines.edit',$medicine)}}">
       <h4>
           {{$medicine->name}}
           {{-- {{$medicine->type}} --}}
       </h4>
       {{-- <h6>{{ $medicine->category->name }} --}}
 
-          <h5><form action="{{route('medicines.destroy',$medicine)}}" method="POST">
+          <h5><form action="{{route('admin.medicines.destroy',$medicine)}}" method="POST">
             @csrf
             @method('DELETE') <button type="submit">Delete</button>
 

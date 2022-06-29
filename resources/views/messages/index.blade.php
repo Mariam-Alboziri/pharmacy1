@@ -21,7 +21,7 @@
                     <tr>
                         {{-- <td>{{$message->id}}</td> --}}
                        {{-- <td>{{$message->id}}</td> --}}
-                        <td><a href="{{route('messages.show',$message)}}">{{$message->id}}</a></td>
+                        <td><a href="{{route('admin.messages.show',$message)}}">{{$message->id}}</a></td>
                         <td>{{$message->c_fname}}</td>
                         <td>{{$message->c_lname}}</td>
                         <td>{{$message->c_message}}</td>
@@ -30,7 +30,7 @@
                             <div class="btn-group" role="group">
 
                                 <div class="col-md-6 padding-right: 5px padding-left: 5px;">
-                                    {{-- <form action="{{ route('admin.messages.destroy', $message) }}" method="POST">
+                                    {{-- <form action="{{ route('admin.admin.messages.destroy', $message) }}" method="POST">
                                         @csrf @method('DELETE')
                                         <button type="  submit" value="delete" class="btn btn-sm btn-danger">Delete</button> --}}
                                     {{-- </form>

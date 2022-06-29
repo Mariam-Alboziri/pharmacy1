@@ -60,7 +60,7 @@ class MedicineController extends Controller
         // $medicine->description =$request->description;
         // $medicine->save();
 
-        return redirect()->route('medicines.index');
+        return redirect()->route('admin.medicines.index');
 
 
     }
@@ -118,7 +118,7 @@ class MedicineController extends Controller
             //$medicine->save();
 
             // $categories=Category::all(['id','name']);
-            return redirect()->route('medicines.index');
+            return redirect()->route('admin.medicines.index');
     }
 
     /**
@@ -130,6 +130,6 @@ class MedicineController extends Controller
     public function destroy(Medicine $medicine)
     {
         $medicine->delete();
-        return redirect()->route('medicines.index');
+        return redirect()->route('admin.medicines.index');
     }
 }

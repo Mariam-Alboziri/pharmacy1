@@ -45,7 +45,7 @@ class CategoryController extends Controller
         ]);
         $category=Category::create($validate);
 
-        return redirect()->route('categories.index');
+        return redirect()->route('admin.categories.index');
 
     }
 
@@ -90,7 +90,7 @@ class CategoryController extends Controller
         ]);
         $category=Category::create($validate);
 
-        return redirect()->route('categories.index');
+        return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -102,7 +102,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('categories.index');
+        return redirect()->route('admin.categories.index');
 
     }
 }
