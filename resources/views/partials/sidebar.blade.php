@@ -48,16 +48,23 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="icons">
-                    <a href="#" class="icons-btn d-inline-block js-search-open"><span
+                {{-- <div class="icons">
+                    <a href="{{ route('medicines.index') }}" class="icons-btn d-inline-block" ><span
                             class="icon-search"></span></a>
-                    <a href="cart.html" class="icons-btn d-inline-block bag">
-                        <span class="icon-shopping-bag"></span>
+                    {{-- <form action="{{ route('medicines.index') }}" class="icons-btn d-inline-block bag"> </form> --}}
+                     {{--   <span class="icon-shopping-bag"></span>
                         <span class="number">2</span>
-                    </a>
+
                     <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span
                             class="icon-menu"></span></a>
-                </div>
+                </div> --}}
+                <form class="form-inline my-2 my-lg-0" action="{{ route('medicines.index') }}" method="GET">
+                    <input type="hidden" name="category" value="{{ request()->category }}">
+                    <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search"
+                    value="{{ request()->q }}" aria-label="Search">
+
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
             </div>
         </div>
     {{-- </div> --}}
