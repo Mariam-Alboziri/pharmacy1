@@ -69,7 +69,8 @@ $q->where('name','like', "%$request->q%" );
      */
     public function show(Medicine $medicine)
     {
-        //
+
+        return view ('public.medicines.show',compact('medicine'));
     }
 
     /**
