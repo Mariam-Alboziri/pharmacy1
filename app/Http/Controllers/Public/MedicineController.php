@@ -19,7 +19,7 @@ class MedicineController extends Controller
     {
        // $medicines=Medicine::orWhere('name','like',"%$request->q%")
        // ->orWhere('brand','like',"%$request->q%");
-$query=Medicine::query();
+$query=Medicine::latest();
 if ($request->filled('category')){
 
 
@@ -31,11 +31,7 @@ if ($request->filled('q')){
 $q->where('name','like', "%$request->q%" );
     } );
 }
-
-
-
-
-        $medicines=$query->get();
+        $medicines=$query->paginate(3);
         $categories=Category::has('medicines')->get();
         return view ('public.medicines.index',compact('medicines','categories'));
     }
