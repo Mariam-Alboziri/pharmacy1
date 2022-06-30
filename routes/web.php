@@ -33,8 +33,8 @@ Route::view('/contact-us','pages.contact')->name('contact');
 Route::post('/contact-us',[MessageController::class,'store'])->name('messages.store');
 Route::resource('medicines',PublicMedicineController::class);
 
-Route::name('admin.')->group(function(){
-Route::prefix('admin')->group(function () {
+Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
+
 
 Route::get('messages', [MessageController::class,'index'])->name('messages.index');
 Route::get('messages/{message}', [MessageController::class,'show'])->name('messages.show');
@@ -51,4 +51,3 @@ Route::resource('medicines' , MedicineController::class);
 Route::resource('categories',CategoryController::class);
 });
 
-});
