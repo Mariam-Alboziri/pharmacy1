@@ -12,6 +12,9 @@
           {{-- {{$medicine->type}} --}}
       </h4>
       <h6>{{ $medicine->category->name }}
+        <div class="content">
+                {!! $medicine->description !!}
+            </div>
 
           <h5><form action="{{route('admin.medicines.destroy',$medicine)}}" method="POST">
             @csrf

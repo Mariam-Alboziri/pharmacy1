@@ -106,7 +106,7 @@ class MedicineController extends Controller
             'brand'       =>'required',
             'category_id' =>'required',
             'price'       =>'required|numeric|min:100',
-            'description' =>'required',
+            'description' =>'required|string',
             ]);
 
             $medicine->update($validated);

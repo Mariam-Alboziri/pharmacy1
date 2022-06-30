@@ -25,6 +25,7 @@
 
 
 
+    @stack('css')
 </head>
 
 <body>
@@ -109,7 +110,7 @@
     <script src="/js/aos.js"></script>
 
     <script src="/js/main.js"></script>
-
+    @stack('js')
 </body>
 
 </html>

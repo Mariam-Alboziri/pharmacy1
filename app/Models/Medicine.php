@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Medicine extends Model
 {
+
+
+    // protected $casts = [
+
+    //     'description' => CleanHtml::class,
+    // ];
+
     use HasFactory;
 
     protected $guarded=[];
