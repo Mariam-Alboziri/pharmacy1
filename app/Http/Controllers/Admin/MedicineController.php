@@ -19,7 +19,25 @@ class MedicineController extends Controller
     {
         $medicines=Medicine::all();
         $categories=Category::all(['id','name']);
-        return view('admin.medicines.index',compact('medicines','categories'));
+        $medicines=Medicine::latest()->paginate(1);
+        return view('admin.medicines.index',compact('medicines'));
+
+
+
+
+        // $query=Medicine::latest();
+        // if ($request->filled('category')){
+        //    $query->where('category_id',$request->category);
+        // }
+        // if ($request->filled('q')){
+
+        //     $query->where(function($q) use($request){
+        // $q->where('name','like', "%$request->q%" );
+        //     } );
+        // }
+        //         //$medicines=$query->paginate(3);
+        //         //$categories=Category::has('medicines')->get();
+        //         return view ('admin.medicines.index',compact('medicines','categories'));
     }
 
     /**
@@ -41,6 +59,7 @@ class MedicineController extends Controller
      */
     public function store(Request $request)
     {
+      //  $request->dd();
       $validate = $request->validate([
         'name'        =>'required',
         // 'type'        =>'required',
@@ -48,8 +67,11 @@ class MedicineController extends Controller
         'category_id' =>'required|numeric|exists:categories,id',
         'price'       =>'required|numeric|min:100',
         'description' =>'required',
+        'featured_image'=>'required|file|image',
         ]);
-        $medicine=new Medicine;
+        $validated['featured_image']=$request->file('featured_image')->store('/','public');
+      //  $medicine=new Medicine;
+
         $medicine=Medicine::create($validate);
 
 
@@ -74,7 +96,7 @@ class MedicineController extends Controller
      */
     public function show(Medicine $medicine)
     {
-        return view('medicines.show',compact('medicine'));
+        return view('admin.medicines.show',compact('medicine'));
     }
 
     /**
