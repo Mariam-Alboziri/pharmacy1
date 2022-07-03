@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
-
+use App\Models\Medicine;
 
 class CategoryController extends Controller
 {
@@ -16,10 +16,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(2);
+        return view('admin.categories.index', compact('categories'));
+          }
 
-        return view('admin.categories.index',compact('categories'));
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -44,6 +44,8 @@ class CategoryController extends Controller
             // 'price'=>'required|numeric|min:100',
         ]);
         $category=Category::create($validate);
+        session()->flash('message', 'The category was added successfully');
+        session()->flash('message-type', 'success');
 
         return redirect()->route('admin.categories.index');
 
@@ -84,13 +86,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $validate= $request->validate([
-            'name'=>'required|min:3|max:255',
-            // 'price'=>'required|numeric|min:100',
-        ]);
-        $category=Category::create($validate);
+        // $validate= $request->validate([
+        //     'name'=>'required|min:3|max:255',
+        //     // 'price'=>'required|numeric|min:100',
+        // ]);
+        // $category=Category::create($validate);
+       // return redirect()->route('admin.categories.index');
+       $category->update($request->validated());
 
-        return redirect()->route('admin.categories.index');
+       return redirect()->route('admin.categories.index');
     }
 
     /**

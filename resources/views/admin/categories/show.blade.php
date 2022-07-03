@@ -1,29 +1,17 @@
 @extends('layouts.app')
 
+@section('title', 'Category' . '-' . $category->name)
+
 @section('content')
-<div class="row">
-    @foreach ($category->medicines as $medicine)
-
-
-    <div class="col-md-4">
-  <a href="{{route('admin.medicines.edit',$medicine)}}">
-      <h4>
-          {{$medicine->name}}
-          {{-- {{$medicine->type}} --}}
-      </h4>
-      {{-- <h6>{{ $medicine->category->name }} --}}
-
-          <h5><form action="{{route('admin.medicines.destroy',$medicine)}}" method="POST">
-            @csrf
-            @method('DELETE') <button type="submit">Delete</button>
-
-        </form></h5>
-  </a>
-
-
-    </div>
-    @endforeach
-</div>
-
-
+    <section class="section layout_padding">
+        <section class="container">
+            <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                <div class="card-header">{{ $category->name }}</div>
+                <div class="card-body">
+                    <h5 class="card-title text-white">{{ $category->name }}</h5>
+                    {{-- <h5 class="card-title text-white">{{ $category->capacity }}</h5> --}}
+                </div>
+            </div>
+        </section>
+    </section>
 @endsection
