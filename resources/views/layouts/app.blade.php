@@ -30,11 +30,11 @@
 
 <body>
 
-      {{-- <!-- loader  -->
-      <div>
+       <!-- loader  -->
+      {{-- <div>
         <div class="loader"><img src="/images/loading.gif" alt="" /></div>
-    </div>
-    <!-- end loader --> --}}
+    </div> --}}
+    <!-- end loader -->
 
 
     @include('partials.sidebar')
