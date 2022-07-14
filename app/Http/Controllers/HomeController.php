@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
    public function welcome () {
-        return view('welcome');
+    $products=Product::take(8)->get();
+        return view('welcome')->with('products',$products);
     }
 }
