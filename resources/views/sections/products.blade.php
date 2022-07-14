@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="title-section text-center col-12">
-                <a href="{{ route('medicines.index') }}">
+                <a href="{{ route('pages.shop') }}">
                     <h2>Pharmacy <strong class="text-primary">Products</strong></h2>
                 </a>
             </div>

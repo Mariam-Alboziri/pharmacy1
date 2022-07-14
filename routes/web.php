@@ -32,7 +32,9 @@ use LDAP\Result;
 */
 
 Route::get('/',[HomeController::class,'welcome'])->name('home');
-Route::get('/shop',[ShopController::class,'index'])->name('shop');
+Route::get('/shop',[ShopController::class,'index'])->name('shop.index');
+Route::get('/shop/{product}',[ShopController::class,'show'])->name('shop.show');
+
 
 
 Route::view('/contact-us','pages.contact')->name('contact');

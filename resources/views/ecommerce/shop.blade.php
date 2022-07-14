@@ -41,8 +41,8 @@
             @foreach ($products as $product)
                 <div class="col-sm-6 col-lg-4 text-center item mb-4 item-v2">
                     <span class="onsale">Sale</span>
-                    <a href="shop-single.html"> <img src="images/product_01.png" alt="Image"></a>
-                    <h3 class="text-dark"><a href="shop-single.html">{{ $product->name }}</a></h3>
+                    <a href="{{ route('shop.show',$product->slug) }}"> <img src="images/product_01.png" alt="Image"></a>
+                    <h3 class="text-dark"><a href="{{ route('shop.show',$product->slug) }} ">{{ $product->name }}</a></h3>
                     <p class="price"><del>{{ $product->price }}</del> &mdash; $55.00</p>
                 </div>
             @endforeach
