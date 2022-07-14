@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
@@ -42,6 +43,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_admin' => 'boolean',
     ];
 
     protected function password(): Attribute
@@ -51,4 +53,10 @@ class User extends Authenticatable
         );
     }
 
+    protected function featuredImage (): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value ? "/storage/$value" : 'https://th.bing.com/th/id/R.a4a1b34e9d9c2e4148674a8f2f02e294?rik=JaAU7TXQS2r7Gw&riu=http%3a%2f%2fpasmart.ir%2fassets%2fimages%2fmembers%2fuser-placeholder_man.png&ehk=xXaouMHsmH2Z0kCHmZGBMgVeLT%2byOtUI%2brN86T2eauM%3d&risl=&pid=ImgRaw&r=0',
+        );
+    }
 }
