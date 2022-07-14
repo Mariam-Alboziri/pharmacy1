@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\Public\MedicineController as PublicMedicineController;
+use App\Http\Controllers\ShopController;
 use App\Models\Medicine;
 //use App\Http\Controllers\Public\CarController as PublicCarController;
 //use App\Http\Controllers\Public\CategoryController as PublicCategoryController;
@@ -31,13 +32,15 @@ use LDAP\Result;
 */
 
 Route::get('/',[HomeController::class,'welcome'])->name('home');
+Route::get('/shop',[ShopController::class,'index'])->name('shop');
+
 
 Route::view('/contact-us','pages.contact')->name('contact');
 
 Route::view('/cart','pages.cart');
 Route::view('/checkout','pages.checkout');
 Route::view('/product','pages.product');
-Route::view('/shop','pages.shop');
+//Route::view('/shop','pages.shop');
 Route::view('/thankyou','pages.thankyou');
 
 
