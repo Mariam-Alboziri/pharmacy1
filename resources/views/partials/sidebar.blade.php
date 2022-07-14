@@ -65,6 +65,8 @@
 
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
+
+
                 @auth
                 <div class="nav-item px-3">
                     Hello {{ auth()->user()->name }}
