@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 //use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\MedicineController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -41,8 +42,8 @@ Route::get('login', [LoginController::class, 'show'])->name('login')->middleware
 Route::post('login', [LoginController::class, 'authenticate'])->middleware('guest');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
-Route::get('register', [RegisteredUserController::class, 'create'])->name('register')->middleware('auth');
-Route::post('register', [RegisteredUserController::class, 'store'])->middleware('auth');
+Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
+Route::post('register', [RegisteredUserController::class, 'store']);
 
 Route::get('forgot-password', [ForgotPasswordController::class, 'show'])->middleware('guest')->name('password.request');
 Route::post('forgot-password', [ForgotPasswordController::class, 'store'])->middleware('guest')->name('password.request');
@@ -59,19 +60,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin','middleware' => 'auth'], fun
 Route::get('messages', [MessageController::class,'index'])->name('messages.index');
 Route::get('messages/{message}', [MessageController::class,'show'])->name('messages.show');
 
-
-
-
-
-// Route::get('medicines/create',[MedicineController::class,'create'])->name('medicines.create');
-// Route::get('medicines',[MedicineController::class,'show'])->name('medicines.show');
-// Route::get('medicines', [MedicineController::class,'index'])->name('medicines.index');
-// Route::post('medicines',[MedicineController::class,'store'])->name('medicines.store');
-// Route::get('medicines/{medicine}/edit',[MedicineController::class,'edit'])->name('medicines.edit');
-// Route::put('medicines/{medicine}',[MedicineController::class,'update'])->name('medicines.update');
-// Route::delete('medicines/{medicine}',[MedicineController::class,'destroy'])->name('medicines.destroy');
-
 Route::resource('medicines' , MedicineController::class);
 Route::resource('categories',CategoryController::class);
+Route::resource('users', UserController::class);
 });
 
