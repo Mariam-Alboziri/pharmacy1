@@ -38,7 +38,22 @@
                 </div>
 
               </div>
-              <p><a href="cart.html" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Add To Cart</a></p>
+              {{-- <p><a href="cart.html" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Add To Cart</a></p> --}}
+
+
+              <form action="{{ route('cart.store') }}" method="POST">
+                {{ csrf_field() }}
+                <input type="hidden" name="id" value="{{ $product->id }}">
+                <input type="hidden" name="nsme" value="{{ $product->name }}">
+                <input type="hidden" name="price" value="{{ $product->price }}">
+                <input type="hidden" value="1" name="quantity">
+                <button type="submit" class="button button-plain"> Add to Cart</button>
+
+
+
+
+</form>
+
 
               <div class="mt-5">
                 <ul class="nav nav-pills mb-3 custom-pill" id="pills-tab" role="tablist">
