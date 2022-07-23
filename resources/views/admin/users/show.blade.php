@@ -3,6 +3,7 @@
 @section('title' . ' - ' . $user->name)
 
 @section('content')
+@include('partials.sidebarnos')
     <section>
         <div class="container my-5">
             <div class="card my-2 shadow bg-white rounded">

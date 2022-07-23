@@ -3,13 +3,15 @@
 @section('title', 'Add a new category')
 
 @section('content')
+@include('partials.sidebarnos')
+<br>
     <section class="section py-10" style="padding-bottom: 50px">
         <div class="container">
             <form action="{{ route('admin.categories.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
+                    <label class="col-md-6" for="name">Name</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror col-md-6" id="name" name="name"
                         placeholder="" value="{{ old('name') }}">
                     @error('name')
                         <div class="invalid-feedback">{{ $message }}</div>

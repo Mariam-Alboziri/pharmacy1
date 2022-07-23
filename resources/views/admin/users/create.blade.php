@@ -3,6 +3,7 @@
 @section('title', 'create User')
 
 @section('content')
+@include('partials.sidebarnos')
     <section class="section py-10" style="padding-bottom: 50px">
         <div class="container my-5">
             <form action="{{ route('admin.users.store') }}" method="POST">

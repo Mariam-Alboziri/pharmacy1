@@ -3,9 +3,10 @@
 @section('title', 'medicines')
 
 @section('content')
+@include('partials.sidebar')
     <div class="container my-5">
         <div class="full">
-            <h1>Here's Your medicines !</h1>
+            <h1>Here's your product !</h1> <br>
             <div class="col">
                 <h3><a href="{{ route('admin.medicines.create') }}" class="text-primary stretched-link">Add more!</a></h3>
             </div>
@@ -13,13 +14,16 @@
 
         <div class="row">
             @foreach ($medicines as $medicine)
-                <div class="col-md-4">
-                    <div class="card cardhov my-2">
+
+
+                        <div class="col-md-4">
+                            <div class="card cardhov my-2">
+                                <img src="/storage/{{ $medicine->featured_image }}" width="100%">
 
                         {{-- {{ $medicine->getFirstMedia() }} --}}
 
                         <div class="card-body">
-                            <h5 class="card-title">{{ $medicine->brand }} {{ $medicine->name }}</h5>
+                            <h5 class="card-title">{{ $medicine->name }}</h5>
                             <a href="{{ route('admin.medicines.show', $medicine) }}" class="text-primary stretched-link"> show more
                                 info
                             </a>
@@ -71,9 +75,15 @@
                         </div>
                     </div>
                 </div>
+
             @endforeach
         </div>
-        {{ $medicines->links() }}
+
+        <br><br>
+        <div class="row justify-content-center">
+
+        {{ $medicines->withQueryString() }}
+        </div>
     </div>
 @endsection
 

@@ -3,6 +3,9 @@
 @section('title', 'Category' . '-' . $category->name)
 
 @section('content')
+
+@include('partials.sidebarnos')
+<br>
     <section class="section layout_padding">
         <section class="container">
             <div class="card text-white bg-info mb-3" style="max-width: 18rem;">

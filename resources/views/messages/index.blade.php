@@ -3,9 +3,12 @@
 @section('title','Messages')
 
 @section('content')
+@include('partials.sidebarnos')
     <section class="section layout_padding">
         <div class="container">
+            <br>
             <h3>Received Messages</h3>
+            <br>
             <table class="table table-hover ">
                 <thead>
                         <th>id</th>

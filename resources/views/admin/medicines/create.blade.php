@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Add a new car')
+@section('title', 'Add a new product')
 
 @push('css')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -16,7 +16,7 @@
     <script>
         $(document).ready(function() {
             $('#description').summernote({
-                placeholder: 'Hello Bootstrap 4',
+                placeholder: '',
                 tabsize: 2,
                 height: 100
             });
@@ -25,21 +25,12 @@
 @endpush
 
     @section('content')
+    @include('partials.sidebarnos')
     <section class="section py-10" style="padding-bottom: 50px">
     <div class="container my-5">
         <form action="{{ route('admin.medicines.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        <label for="brand">Brand</label>
-                        <input type="text" class="form-control @error('brand') is-invalid @enderror" id="brand" name="brand"
-                            placeholder="" value="{{ old('brand') }}">
-                        @error('brand')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="model">Name</label>
@@ -50,27 +41,20 @@
                         @enderror
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="price">Price</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">SYP</span>
-                            </div>
-                            <input name="price" id="price" type="number" min="1000" step="500"
-                                class="form-control @error('price') is-invalid @enderror"
-                                value="{{ old('price')}}">
-                        </div>
-                        @error('price')
+                        <label for="brand">Company</label>
+                        <input type="text" class="form-control @error('brand') is-invalid @enderror" id="brand" name="brand"
+                            placeholder="" value="{{ old('brand') }}">
+                        @error('brand')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
-                <div class="col">
+            </div>
 
+            <div class="row">
+                <div class="col">
                     <div class="form-group">
                         <label>Medicine category</label>
                         <select name="category_id" class="form-control @error('category_id') is-invalid @enderror">
@@ -82,6 +66,23 @@
                             @endforeach
                         </select>
                         @error('category_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col">
+
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">SYP</span>
+                            </div>
+                            <input name="price" id="price" type="number" min="1000" step="500"
+                                class="form-control @error('price') is-invalid @enderror"
+                                value="{{ old('price')}}">
+                        </div>
+                        @error('price')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>

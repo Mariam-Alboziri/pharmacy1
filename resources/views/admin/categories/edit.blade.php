@@ -1,14 +1,17 @@
 @extends('layouts.app')
 @section('title', 'Edit category | ' . $category->name )
 @section('content')
+
+@include('partials.sidebarnos')
+<br>
     <section class="section py-10" style="padding-bottom: 50px">
         <div class="container">
             <form action="{{ route('admin.categories.update', $category) }}" method="POST">
                 @csrf
                 @method('put')
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                    <label  class="col-md-6"   for="name">Name</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror col-md-6" id="name"
                         name="name" value="{{ old('name',$category->name )}}" placeholder="">
                     @error('name')
                         <div class="invalid-feedback">{{ $message }}</div>

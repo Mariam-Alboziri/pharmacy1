@@ -3,6 +3,7 @@
 @section('title', 'users')
 
 @section('content')
+@include('partials.sidebarnos')
     <div class="container my-5">
         <div class="full">
             <h1>Here's Your users !</h1>

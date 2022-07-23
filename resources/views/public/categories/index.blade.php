@@ -3,31 +3,30 @@
 @section('title', 'Categories')
 
 @section('content')
-
 @include('partials.sidebarnos')
-
-<br>
     <div class="container my-5">
-        <div class="full">
+        {{-- <div class="full">
             <h1>Here's Your Categories !</h1>
             <div class="col">
                 @if($categories->count()!=0)<h3><a href="{{ route('admin.categories.create') }}" class="text-primary stretched-link">Add more!</a></h3>@endif
             </div>
-        </div>
-<br>
+        </div> --}}
+
         <div class="row">
             @forelse ($categories as $category)
                 <div class="col-md-4">
 
                     <div class="card cardhov my-2">
-                        <img src="/images/hero_1.jpg" width="100%">
+
                         {{-- {{ $category->getFirstMedia() }} --}}
 
                         <div class="card-body">
+                            <img src="/images/hero_1.jpg" width="100%">
+                            <br> <br>
                             <h3 class="card-title">{{ $category->name }} ({{ $category->medicines->count() }})</h3>
                             {{-- <p class="card-text">Capacity: {{ $category->capacity }}</p> --}}
-                            <a href="{{ route('admin.categories.show',$category) }}" class="text-primary stretched-link"> show Medicines in Category</a>
-                            <div class="row my-2">
+                            <a href="{{ route('categories.show',$category) }}" class="text-primary stretched-link"> show Medicines in Category</a>
+                            {{-- <div class="row my-2">
                                 <div class="col">
                                     <form action="{{ route('admin.categories.edit', $category) }}" method="PUT"> @csrf
                                         <button class="btn ma-2" type="submit"
@@ -73,7 +72,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

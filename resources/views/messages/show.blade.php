@@ -3,8 +3,10 @@
 @section('title', 'Messages' . ' - ' . $message->name)
 
 @section('content')
+@include('partials.sidebarnos')
     <section>
         <div class="container">
+            <br>
         <div class="card" style="width:18rem;">
             <div class="card text-center shadow rounded">
                 <div class="card-body">
@@ -18,5 +20,6 @@
               </div>
         </div>
         </div>
+        <br>
     </section>
 @endsection

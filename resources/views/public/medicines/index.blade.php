@@ -3,6 +3,18 @@
 @section('title', 'medicines')
 
 @section('content')
+
+@include('partials.sidebar')
+
+<div class="bg-light py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <a
+            href="shop.html">Store</a> <span class="mx-2 mb-0"></span> <strong class="text-black"></strong></div>
+      </div>
+    </div>
+  </div>
+</div>
     <div class="container my-5">
         <div class="full">
             <h1> Medicines </h1>
@@ -73,7 +85,11 @@
                 </div>
             @endforeach
         </div>
-        {{ $medicines->links() }}
+        <br><br>
+        <div class="row justify-content-center">
+
+        {{ $medicines->withQueryString() }}
+        </div>
     </div>
 @endsection
 

@@ -72,13 +72,13 @@
                     </nav>
                 </div>
 
-                <form class="form-inline my-2 my-lg-0" action="{{ route('medicines.index') }}" method="GET">
+                {{-- <form class="form-inline my-2 my-lg-0" action="{{ route('medicines.index') }}" method="GET">
                     <input type="hidden" name="category" value="{{ request()->category }}">
                     <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search"
                     value="{{ request()->q }}" aria-label="Search">
 
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                </form> --}}
 
                 {{-- <div class="icons">
                     <a href="{{ route('medicines.index') }}" class="icons-btn d-inline-block" ><span
