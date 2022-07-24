@@ -4,9 +4,9 @@
     <div class="container">
       <div class="row justify-content-center text-center">
        <div class="col-lg-7">
-         <h3 class="text-white">Sign up for discount up to 55% OFF</h3>
-         <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem consectetur quam.</p>
-         <p class="mb-0"><a href="{{ route('login') }}" class="btn btn-outline-white">Sign up</a></p> <br>
+         <h3 class="text-white">Register for discount up to 55% OFF</h3> <br>
+         {{-- <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem consectetur quam.</p> --}}
+         {{-- <p class="mb-0"><a href="{{ route('login') }}" class="btn btn-outline-white">Sign up</a></p> <br> --}}
          <p class="mb-0"><a href="{{ route('register') }}" class="btn btn-outline-white">Register</a></p>
        </div>
       </div>

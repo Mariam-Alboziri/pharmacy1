@@ -14,6 +14,7 @@ use App\Http\Controllers\MariamController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Public\MedicineController as PublicMedicineController;
+use App\Http\Controllers\PublicCategoryController;
 use App\Http\Controllers\RehamController;
 use App\Http\Controllers\ShopController;
 use App\Models\Medicine;
@@ -37,7 +38,7 @@ use LDAP\Result;
 
 Route::get('/',[HomeController::class,'welcome'])->name('home');
 //Route::get('/shop',[ShopController::class,'index'])->name('shop.index');
-//Route::get('/shop/{product}',[ShopController::class,'show'])->name('shop.show');
+Route::get('/shop/{product}',[ShopController::class,'show'])->name('shop.show');
 //Route::get('/cart',[CartController::class,'index'])->name('cart.index');
 //Route::post('/cart',[CartController::class,'store'])->name('cart.store');
 //Route::resource('/shop',ShopController::class);
@@ -49,6 +50,7 @@ Route::get('/',[HomeController::class,'welcome'])->name('home');
 
 
 Route::view('/contact-us','pages.contact')->name('contact');
+Route::view('/about','pages.about')->name('about');
 
 //Route::view('/cart','pages.cart');
 Route::view('/checkout','pages.checkout');
@@ -72,6 +74,9 @@ Route::post('clear', [RehamController::class, 'clearAllCart'])->name('cart.clear
 
 Route::post('/contact-us',[MessageController::class,'store'])->name('messages.store');
 Route::resource('medicines',PublicMedicineController::class);
+Route::resource('categories',PublicCategoryController::class);
+
+
 
 // Auth Routes
 Route::get('login', [LoginController::class, 'show'])->name('login')->middleware('guest');

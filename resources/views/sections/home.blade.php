@@ -10,12 +10,12 @@
 
                                 <div class="row justify-content-center mb-5">
                                     <div class="col-lg-6 text-center">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis ex
-                                            perspiciatis non quibusdam vel quidem.</p>
+                                        {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis ex
+                                            perspiciatis non quibusdam vel quidem.</p> --}}
                                     </div>
                                 </div>
 
-                                <p><a href="#" class="btn btn-primary px-5 py-3">Shop Now</a></p>
+                                <p><a href="{{ route('products.list') }}" class="btn btn-primary px-5 py-3">Shop Now</a></p>
                             </div>
                         </div>
                     </div>
@@ -31,8 +31,8 @@
                                 </h1>
                                 <div class="row justify-content-center mb-5">
                                     <div class="col-lg-6 text-center">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis ex
-                                            perspiciatis non quibusdam vel quidem.</p>
+                                        {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis ex
+                                            perspiciatis non quibusdam vel quidem.</p> --}}
                                     </div>
                                 </div>
                                 <p><a href="#" class="btn btn-primary px-5 py-3">Shop Now</a></p>
