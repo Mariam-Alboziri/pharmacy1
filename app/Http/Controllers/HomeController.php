@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Admin\MedicineController;
+use App\Models\Medicine;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
    public function welcome () {
-    $products=Product::take(8)->get();
-        return view('welcome')->with('products',$products);
+    $medicines=Medicine::take(8)->get();
+        return view('welcome')->with('medicines',$medicines);
     }
 }

@@ -17,10 +17,14 @@ class MedicineController extends Controller
      */
     public function index()
     {
-        $medicines=Medicine::all();
+        // $medicines=Medicine::all();
+        $medicines=Medicine::take(12)->get();
+
+
         $categories=Category::all(['id','name']);
-        $medicines=Medicine::latest()->paginate(1);
-        return view('admin.medicines.index',compact('medicines'));
+        $medicines=Medicine::latest()->paginate(3);
+        return view('admin.medicines.index')->with('medicines',$medicines);
+        // return view('admin.medicines.index',compact('medicines'));
 
 
 
@@ -48,6 +52,9 @@ class MedicineController extends Controller
     public function create()
     {
         $categories=Category::all(['id','name']);
+        session()->flash('message','The product was added successfully');
+        session()->flash('message-type','success');
+
         return view('admin.medicines.create',compact('categories'));
     }
 
@@ -60,7 +67,7 @@ class MedicineController extends Controller
     public function store(Request $request)
     {
       //  $request->dd();
-      $validate = $request->validate([
+      $validated = $request->validate([
         'name'        =>'required',
         // 'type'        =>'required',
         'brand'       =>'required',
@@ -72,7 +79,7 @@ class MedicineController extends Controller
         $validated['featured_image']=$request->file('featured_image')->store('/','public');
       //  $medicine=new Medicine;
 
-        $medicine=Medicine::create($validate);
+        $medicine = Medicine::create($validated);
 
 
         // $medicine->name=$request->name;
