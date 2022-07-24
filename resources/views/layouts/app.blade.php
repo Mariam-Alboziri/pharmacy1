@@ -37,7 +37,16 @@
     <!-- end loader -->
 
 
-    @include('partials.sidebar')
+    {{-- @include('partials.sidebarnos') --}}
+
+    {{-- @if(session()->has('message'))
+    <div class="container">
+        <div class="alert alert-{{ session('message-type','info') }} alert-dismissible fadeshow " role="alert">
+            {{ session('message') }}
+        </div>
+    </div>
+
+    @endif --}}
         @yield('content')
 
 
