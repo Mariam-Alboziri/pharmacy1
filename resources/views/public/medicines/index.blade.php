@@ -27,7 +27,7 @@
             @foreach ($medicines as $medicine)
                 <div class="col-md-4">
                     <div class="card cardhov my-2">
-                        <img src="/storage/{{ $medicine->featured_image }}" width="100%">
+                        <a href="{{ route('medicines.show', $medicine )}}"><img src="/storage/{{ $medicine->featured_image }}" width="100%"></a>
                         {{-- {{ $medicine->getFirstMedia() }} --}}
 
                         <div class="card-body">

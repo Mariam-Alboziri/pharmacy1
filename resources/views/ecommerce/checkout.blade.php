@@ -1,3 +1,4 @@
+@include('partials.sidebarnos')
 
     <div class="bg-light py-3">
         <div class="container">
@@ -218,7 +219,7 @@
                   </div>
                 </div>
               </div>
-
+              @foreach ($cartItems as $item)
               <div class="row mb-5">
                 <div class="col-md-12">
                   <h2 class="h3 mb-3 text-black">Your Order</h2>
@@ -230,22 +231,19 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Bioderma <strong class="mx-2">x</strong> 1</td>
-                          <td>$55.00</td>
+                          <td>{{ $item->name }}<strong class="mx-2">x</strong> {{ Cart::getTotalQuantity()}}</td>
+                          <td>{{ Cart::getTotal() }}</td>
                         </tr>
-                        <tr>
-                          <td>Ibuprofeen <strong class="mx-2">x</strong> 1</td>
-                          <td>$45.00</td>
-                        </tr>
-                        <tr>
+                        {{-- <tr>
                           <td class="text-black font-weight-bold"><strong>Cart Subtotal</strong></td>
                           <td class="text-black">$350.00</td>
-                        </tr>
+                        </tr> --}}
                         <tr>
                           <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
-                          <td class="text-black font-weight-bold"><strong>$350.00</strong></td>
+                          <td class="text-black font-weight-bold"><strong>{{ Cart::getTotal() }}</strong></td>
                         </tr>
-                      </tbody>
+                    @endforeach
+                    </tbody>
                     </table>
 
                     <div class="border mb-3">
@@ -285,8 +283,10 @@
                     </div>
 
                     <div class="form-group">
-                      <button class="btn btn-primary btn-lg btn-block" onclick="window.location='thankyou.html'">Place
-                        Order</button>
+                      <a href="{{ route('thanckyou.store') }}">
+                          <button class="btn btn-primary btn-lg btn-block" onclick="window.location='thankyou.html'">Place
+                            Order</button>
+                      </a>
                     </div>
 
                   </div>

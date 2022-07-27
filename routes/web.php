@@ -9,6 +9,8 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ConfirmationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MariamController;
 use App\Http\Controllers\MessageController;
@@ -37,35 +39,29 @@ use LDAP\Result;
 */
 
 Route::get('/',[HomeController::class,'welcome'])->name('home');
-//Route::get('/shop',[ShopController::class,'index'])->name('shop.index');
-Route::get('/shop/{product}',[ShopController::class,'show'])->name('shop.show');
-//Route::get('/cart',[CartController::class,'index'])->name('cart.index');
-//Route::post('/cart',[CartController::class,'store'])->name('cart.store');
-//Route::resource('/shop',ShopController::class);
-//Route::resource('/cart',CartController::class);
-//Route::resource('/product',ProductController::class);
-
-
-
-
 
 Route::view('/contact-us','pages.contact')->name('contact');
 Route::view('/about','pages.about')->name('about');
 
-//Route::view('/cart','pages.cart');
-Route::view('/checkout','pages.checkout');
-//Route::view('/product','pages.product');
-//Route::view('/shop','pages.shop');
-Route::view('/thankyou','pages.thankyou');
+
+Route::get('/products', [PublicMedicineController::class, 'index'])->name('products.list');
+Route::get('/cart', [RehamController::class, 'cartList'])->name('cart.list');
+Route::post('/cart', [RehamController::class, 'addToCart'])->name('cart.store');
+Route::post('/update-cart', [RehamController::class, 'updateCart'])->name('cart.update');
+Route::post('/remove', [RehamController::class, 'removeCart'])->name('cart.remove');
+Route::post('/clear', [RehamController::class, 'clearAllCart'])->name('cart.clear');
+
+Route::resource('/checkout',CheckoutController::class);
+
+Route::resource('/thanckyou',ConfirmationController::class);
 
 
+Route::get('empty',function(){
+    \Cart::clear();
 
-Route::get('/products', [MariamController::class, 'productList'])->name('products.list');
-Route::get('cart', [RehamController::class, 'cartList'])->name('cart.list');
-Route::post('cart', [RehamController::class, 'addToCart'])->name('cart.store');
-Route::post('update-cart', [RehamController::class, 'updateCart'])->name('cart.update');
-Route::post('remove', [RehamController::class, 'removeCart'])->name('cart.remove');
-Route::post('clear', [RehamController::class, 'clearAllCart'])->name('cart.clear');
+});
+
+
 
 
 

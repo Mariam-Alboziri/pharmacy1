@@ -48,16 +48,15 @@
           {{-- <p><a href="cart.html" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Add To Cart</a></p> --}}
 
 
-          <form action="{{ route('cart.store') }}" method="POST">
-            {{ csrf_field() }}
-            <input type="hidden" name="id" value="{{ $medicine->id }}">
-            <input type="hidden" name="nsme" value="{{ $medicine->name }}">
-            <input type="hidden" name="price" value="{{ $medicine->price }}">
+          <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+
+            <input type="hidden" value="{{ $medicine->id }}" name="id">
+            <input type="hidden" value="{{ $medicine->name }}" name="name">
+            <input type="hidden" value="{{ $medicine->price }}" name="price">
+            <input type="hidden" value="{{ $medicine->featured_image }}"  name="image">
             <input type="hidden" value="1" name="quantity">
-            <button type="submit" class="button button-plain"> Add to Cart</button>
-
-
-
+            <button class="px-4 py-2 button button-plain text-white bg-blue-800 rounded">Add To Cart</button>
 
 </form>
 

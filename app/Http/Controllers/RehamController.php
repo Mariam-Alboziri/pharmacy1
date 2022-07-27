@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Medicine;
 use Illuminate\Http\Request;
 
 class RehamController extends Controller
@@ -10,7 +11,7 @@ class RehamController extends Controller
     {
         $cartItems = \Cart::getContent();
         // dd($cartItems);
-        return view('cart', compact('cartItems'));
+        return view('ecommerce.cart', compact('cartItems'));
     }
 
 
@@ -22,7 +23,7 @@ class RehamController extends Controller
             'price' => $request->price,
             'quantity' => $request->quantity,
             'attributes' => array(
-                'image' => $request->image,
+                'image' => $request->featured_image,
             )
         ]);
         session()->flash('success', 'Product is Added to Cart Successfully !');
@@ -49,6 +50,8 @@ class RehamController extends Controller
 
     public function removeCart(Request $request)
     {
+
+
         \Cart::remove($request->id);
         session()->flash('success', 'Item Cart Remove Successfully !');
 
