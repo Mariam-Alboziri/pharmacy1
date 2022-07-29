@@ -219,7 +219,7 @@
                   </div>
                 </div>
               </div>
-              @foreach ($cartItems as $item)
+
               <div class="row mb-5">
                 <div class="col-md-12">
                   <h2 class="h3 mb-3 text-black">Your Order</h2>
@@ -227,13 +227,18 @@
                     <table class="table site-block-order-table mb-5">
                       <thead>
                         <th>Product</th>
-                        <th>Total</th>
+                        {{-- <th>Total</th> --}}
                       </thead>
                       <tbody>
+                        @foreach ($cartItems as $item)
                         <tr>
-                          <td>{{ $item->name }}<strong class="mx-2">x</strong> {{ Cart::getTotalQuantity()}}</td>
-                          <td>{{ Cart::getTotal() }}</td>
+
+                              <td>  <a href="{{ route('cart.list') }}">{{ $item->name }}</a></td>
+
+                          {{-- <td>{{ Cart::getSubTotal() }} </td> --}}
                         </tr>
+
+                        @endforeach
                         {{-- <tr>
                           <td class="text-black font-weight-bold"><strong>Cart Subtotal</strong></td>
                           <td class="text-black">$350.00</td>
@@ -242,7 +247,7 @@
                           <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
                           <td class="text-black font-weight-bold"><strong>{{ Cart::getTotal() }}</strong></td>
                         </tr>
-                    @endforeach
+
                     </tbody>
                     </table>
 
