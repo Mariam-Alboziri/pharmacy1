@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Edit medicine | ' . $medicine->name )
-
+{{--
 @push('css')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet"
@@ -21,7 +21,7 @@
             });
         });
     </script>
-@endpush
+@endpush --}}
 
 @section('content')
 @include('partials.sidebarnos')
@@ -31,22 +31,24 @@
                 @csrf
                 @method('PUT')
                 <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="brand">Brand</label>
-                            <input type="text" class="form-control @error('brand') is-invalid @enderror" id="brand"
-                                name="brand" placeholder="Audi" value="{{ old('brand', $medicine->brand) }}">
-                            @error('brand')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
+
                     <div class="col">
                         <div class="form-group">
                             <label for="model">Name</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                                 name="name" placeholder="A4" value="{{ old('name', $medicine->name) }}">
                             @error('name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="brand">Brand</label>
+                            <input type="text" class="form-control @error('brand') is-invalid @enderror" id="brand"
+                                name="brand" placeholder="Audi" value="{{ old('brand', $medicine->brand) }}">
+                            @error('brand')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
@@ -72,7 +74,7 @@
                     </div>
                     <div class="col">
                         <div class="form-group">
-                            <label>Medicine category</label>
+                            <label>Product category</label>
                             <select name="category_id" class="form-control @error('category_id') is-invalid @enderror">
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}"

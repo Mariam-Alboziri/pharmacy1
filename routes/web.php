@@ -19,6 +19,7 @@ use App\Http\Controllers\Public\MedicineController as PublicMedicineController;
 use App\Http\Controllers\PublicCategoryController;
 use App\Http\Controllers\RehamController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UsersController;
 use App\Models\Medicine;
 //use App\Http\Controllers\Public\CarController as PublicCarController;
 //use App\Http\Controllers\Public\CategoryController as PublicCategoryController;
@@ -51,9 +52,9 @@ Route::post('/update-cart', [RehamController::class, 'updateCart'])->name('cart.
 Route::post('/remove', [RehamController::class, 'removeCart'])->name('cart.remove');
 Route::post('/clear', [RehamController::class, 'clearAllCart'])->name('cart.clear');
 
-Route::resource('/checkout',CheckoutController::class);
+Route::resource('/checkout',CheckoutController::class)->middleware('auth');
 
-Route::resource('/thanckyou',ConfirmationController::class);
+Route::resource('/thanckyou',ConfirmationController::class)->middleware('auth');
 
 
 Route::get('empty',function(){
@@ -62,7 +63,7 @@ Route::get('empty',function(){
 });
 
 
-
+Route::resource('profile',UsersController::class)->middleware('auth');
 
 
 
@@ -96,6 +97,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin','middleware' => 'auth'], fun
 
 Route::get('messages', [MessageController::class,'index'])->name('messages.index');
 Route::get('messages/{message}', [MessageController::class,'show'])->name('messages.show');
+Route::delete('messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
 
 Route::resource('medicines' , MedicineController::class);
 Route::resource('categories',CategoryController::class);

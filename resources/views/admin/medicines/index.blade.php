@@ -6,7 +6,7 @@
 @include('partials.sidebar')
     <div class="container my-5">
         <div class="full">
-            <h1>Here's your product !</h1> <br>
+            <h1>Here's your products !</h1> <br>
             <div class="col">
                 <h3><a href="{{ route('admin.medicines.create') }}" class="text-primary stretched-link">Add more!</a></h3>
             </div>

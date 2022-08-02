@@ -2,6 +2,9 @@
 
 @section('title', 'Add a new product')
 
+
+
+{{--
 @push('css')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -22,7 +25,7 @@
             });
         });
     </script>
-@endpush
+@endpush --}}
 
     @section('content')
     @include('partials.sidebarnos')
@@ -56,7 +59,7 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label>Medicine category</label>
+                        <label>Product category</label>
                         <select name="category_id" class="form-control @error('category_id') is-invalid @enderror">
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}"
