@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MedicineOrder;
+use App\Models\Order;
+use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -13,10 +16,10 @@ class CheckoutController extends Controller
      */
     public function index()
     {
+        $orders = Order::paginate(6);
+        ///dd($user);
+        return view('admin.checkout.index', compact('orders'));
 
-        $cartItems = \Cart::getContent();
-        // dd($cartItems);
-        return view('pages.checkout', compact('cartItems'));
 
     }
 
@@ -27,7 +30,8 @@ class CheckoutController extends Controller
      */
     public function create()
     {
-        //
+        $cartItems = \Cart::getContent();
+        return view('admin.checkout.create',compact('cartItems'));
     }
 
     /**
@@ -38,20 +42,41 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'user_id'                =>auth()->user()? auth()->user()->id : null ,
+            'billing_fname'          =>$request->fname,
+            'billing_lname'          =>$request->lname,
+            'billing_company_name'   =>$request->company,
+            'billing_address'        =>$request->address,
+            'billing_email'          =>$request->email,
+            'billing_phone'          =>$request->phone,
+            'billing_total'          =>$this->getNumbers()->get('total'),
+            'billing_notes'          =>$request->note,
+            'billing_error'          =>null,
+        ]);
+        $order = Order::create($validated);
+        foreach(Cart::content() as $item) {
+            MedicineOrder::create([
+                'medicine_id' =>$item->model->id,
+                'order_id'    =>$order->id,
+                'quantity'     =>$item->quantity,
 
-        \Cart::clear();
-        return redirect()->route('thanckyou.index')->with('success_message','Success Message');
+
+            ]);
+
+        return redirect()->route('admin.checkout.index');
+        }
+
     }
-
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Order $order)
     {
-        //
+        return view('admin.checkout.show', compact('order'));
     }
 
     /**

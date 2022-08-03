@@ -99,6 +99,9 @@
                     @csrf
                     <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
                 </form>
+                <div class="nav-item">
+                    <a href="{{ route('profile.index') }}" class="btn btn-outline-info my-2 my-sm-0">My profile</a>
+                </div>
             @endauth
 
 

@@ -47,4 +47,11 @@ class MessageController extends Controller
 
 
     }
+    public function destroy(Message $message)
+    {
+        $message->delete();
+        $messages = Message::all();
+        return view('messages.index',compact('messages'));
+    }
+
 }

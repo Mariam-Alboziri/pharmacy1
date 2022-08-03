@@ -7,39 +7,38 @@
     <section class="section layout_padding">
         <div class="container">
             <br>
-            <h3>Received Messages</h3>
+            <h1>Received Messages</h1>
             <br>
             <table class="table table-hover ">
                 <thead>
                         <th>id</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Message</th>
+                        <th>name</th>
+                        <th>phone</th>
                         <th>received at</th>
-
-                        {{-- <th colspan="2">action</th> --}}
+                        <th colspan="2">action</th>
                 </thead>
                 <tbody>
                     @foreach ($messages as $message)
                     <tr>
-                        {{-- <td>{{$message->id}}</td> --}}
-                       {{-- <td>{{$message->id}}</td> --}}
-                        <td><a href="{{route('admin.messages.show',$message)}}">{{$message->id}}</a></td>
-                        <td>{{$message->c_fname}}</td>
-                        <td>{{$message->c_lname}}</td>
-                        <td>{{$message->c_message}}</td>
+                        <td>{{$message->id}}</td>
+                        <td><a href="{{route('admin.messages.show',$message->id)}}">{{$message->name}}</a></td>
+                        <td>{{$message->phone}}</td>
                         <td>{{$message->created_at}}</td>
-                        {{-- <td class="text-center row">
+                        <td class="text-center row">
                             <div class="btn-group" role="group">
-
                                 <div class="col-md-6 padding-right: 5px padding-left: 5px;">
-                                    {{-- <form action="{{ route('admin.admin.messages.destroy', $message) }}" method="POST">
+                                    <a href="{{ route('admin.messages.show', $message) }}" class="btn btn-sm btn-warning">
+                                        Show
+                                    </a>
+                                </div>
+                                <div class="col-md-6 padding-right: 5px padding-left: 5px;">
+                                    <form action="{{ route('admin.messages.destroy', $message) }}" method="POST">
                                         @csrf @method('DELETE')
-                                        <button type="  submit" value="delete" class="btn btn-sm btn-danger">Delete</button> --}}
-                                    {{-- </form>
+                                        <button type="submit" value="delete" class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
                                 </div>
                             </div>
-                        </td> --}}
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
