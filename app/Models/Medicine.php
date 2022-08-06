@@ -17,20 +17,20 @@ class Medicine extends Model
 
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'brand',
-        'category_id',
-        'price',
-        'description',
-        'featured_image',
-    ];
+    // protected $fillable = [
+    //     'name',
+    //     'brand',
+    //     'category_id',
+    //     'price',
+    //     'description',
+    //     'featured_image',
+    // ];
 
     protected $guarded=[];
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class,'category_id','id');
     }
 
     public function orders() {

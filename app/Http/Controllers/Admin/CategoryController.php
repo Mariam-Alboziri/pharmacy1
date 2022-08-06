@@ -60,15 +60,27 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($category_id)
     {
-        return view('admin.categories.show',compact('category'));
+
+$category=Category::where('id',$category_id)->first();
+{
 
 
+if($category){
+$medicines = $category->medicines()->get();
 
+return view('admin.categories.show',compact('medicines','category'));
+}
+
+else {
+
+  //  return redirect()->back();
+}
 
     }
 
+}
     /**
      * Show the form for editing the specified resource.
      *

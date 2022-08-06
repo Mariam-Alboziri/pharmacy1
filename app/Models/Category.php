@@ -10,7 +10,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name',  'featured_image',];
+    protected $guarded= [];
 
     public function medicines()
     {
