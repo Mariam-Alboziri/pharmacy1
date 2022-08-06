@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 //use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\MedicineController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -27,6 +28,7 @@ use App\Models\Medicine;
 use App\Models\Message;
 use Illuminate\Routing\Route as RoutingRoute;
 use LDAP\Result;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,7 +95,7 @@ Route::get('/reset-password/{token}', function ($token) {
 Route::post('reset-password', [ForgotPasswordController::class, 'reset'])->name('password.change');
 
 
-Route::group(['as' => 'admin.', 'prefix' => 'admin','middleware' => 'auth'], function () {
+Route::group(['as' => 'admin.', 'prefix' => 'admin','middleware' => ['auth','isAdmin']], function () {
 
 Route::get('messages', [MessageController::class,'index'])->name('messages.index');
 Route::get('messages/{message}', [MessageController::class,'show'])->name('messages.show');
@@ -102,5 +104,9 @@ Route::delete('messages/{message}', [MessageController::class, 'destroy'])->name
 Route::resource('medicines' , MedicineController::class);
 Route::resource('categories',CategoryController::class);
 Route::resource('users', UserController::class);
+
+Route::get('dashboard' ,[DashboardController::class,'index']);
+
+
 });
 
