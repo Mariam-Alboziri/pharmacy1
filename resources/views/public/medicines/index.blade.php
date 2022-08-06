@@ -9,15 +9,15 @@
 <div class="bg-light py-3">
     <div class="container">
       <div class="row">
-        <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <a
-            href="shop.html">Store</a> <span class="mx-2 mb-0"></span> <strong class="text-black"></strong></div>
+        <div class="col-md-12 mb-0"><a href="{{ route('home') }}">Home</a> <span class="mx-2 mb-0">/</span> <a
+            href="{{ route('medicines.index') }}">Store</a> <span class="mx-2 mb-0"></span> <strong class="text-black"></strong></div>
       </div>
     </div>
   </div>
 </div>
     <div class="container my-5">
         <div class="full">
-            <h1> Medicines </h1>
+            <h1> Products </h1>
             {{-- <div class="col">
                 <h3><a href="{{ route('admin.medicines.create') }}" class="text-primary stretched-link">Add more!</a></h3>
             </div> --}}

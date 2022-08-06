@@ -41,11 +41,14 @@ class CategoryController extends Controller
     {
        $validate= $request->validate([
             'name'=>'required|min:3|max:255',
+            'featured_image'=>'required|file|image',
             // 'price'=>'required|numeric|min:100',
         ]);
+        $validated['featured_image']=$request->file('featured_image')->store('/','public');
         $category=Category::create($validate);
         session()->flash('message', 'The category was added successfully');
         session()->flash('message-type', 'success');
+
 
         return redirect()->route('admin.categories.index');
 

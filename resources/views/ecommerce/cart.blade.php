@@ -10,7 +10,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 mb-0">
-          <a href="index.html">Home</a> <span class="mx-2 mb-0">/</span>
+          <a href="{{ route('home') }}">Home</a> <span class="mx-2 mb-0">/</span>
           <strong class="text-black">Cart</strong>
         </div>
       </div>
@@ -69,7 +69,7 @@
                             <input type="hidden" name="id" value="{{ $item->id}}" >
                           <input type="number" name="quantity" value="{{ $item->quantity }}"
                           class="w-6 text-center bg-gray-300" />
-                          <button type="submit" class="px-2 pb-2 ml-2 text-white bg-blue-500">update</button>
+                          <button type="submit" class="btn btn-primary height-auto btn-sm">update</button>
                           </form>
                         </div>
                       </div>
@@ -83,7 +83,7 @@
                       <form action="{{ route('cart.remove') }}" method="POST">
                         @csrf
                         <input type="hidden" value="{{ $item->id }}" name="id">
-                        <button class="btn btn-primary height-auto btn-sm">x</button>
+                        <button class="btn btn-danger height-auto btn-sm">x</button>
                     </form>
 
                     </td>
@@ -129,7 +129,7 @@
         <div class="row mb-5">
             <div class="col-md-6 mb-3 mb-md-0">
                 <br>
-                  <button class="btn btn-outline-primary btn-md ">Continue Shopping</button>
+                  <a href="{{ route('medicines.index') }}"><button class="btn btn-outline-primary btn-md ">Continue Shopping</button></a>
               {{-- <button class="btn btn-primary btn-md btn-block">Update Cart</button> --}}
             </div>
             <div class="col-md-6">

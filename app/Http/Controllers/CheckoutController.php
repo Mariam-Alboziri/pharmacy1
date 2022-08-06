@@ -17,7 +17,7 @@ class CheckoutController extends Controller
     public function index()
     {
         $orders = Order::paginate(6);
-        ///dd($user);
+
         return view('admin.checkout.index', compact('orders'));
 
 
@@ -30,8 +30,8 @@ class CheckoutController extends Controller
      */
     public function create()
     {
-        $cartItems = \Cart::getContent();
-        return view('admin.checkout.create',compact('cartItems'));
+        // $cartItems = \Cart::getContent();
+        return view('admin.checkout.create');
     }
 
     /**
@@ -42,6 +42,9 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
+        $orders = Order::paginate(6);
+
+      //  dd($orders);
         $validated = $request->validate([
             'user_id'                =>auth()->user()? auth()->user()->id : null ,
             'billing_fname'          =>$request->fname,
@@ -50,24 +53,24 @@ class CheckoutController extends Controller
             'billing_address'        =>$request->address,
             'billing_email'          =>$request->email,
             'billing_phone'          =>$request->phone,
-            'billing_total'          =>$this->getNumbers()->get('total'),
+            'billing_total'          =>null,
             'billing_notes'          =>$request->note,
             'billing_error'          =>null,
         ]);
         $order = Order::create($validated);
-        foreach(Cart::content() as $item) {
-            MedicineOrder::create([
-                'medicine_id' =>$item->model->id,
-                'order_id'    =>$order->id,
-                'quantity'     =>$item->quantity,
+        // foreach(Cart::content() as $item) {
+        //     MedicineOrder::create([
+        //         'medicine_id' =>$item->model->id,
+        //         'order_id'    =>$order->id,
+        //         'quantity'     =>$item->quantity,
 
 
-            ]);
+        //     ]);
 
         return redirect()->route('admin.checkout.index');
         }
 
-    }
+
     /**
      * Display the specified resource.
      *

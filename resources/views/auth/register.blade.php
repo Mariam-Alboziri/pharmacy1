@@ -4,8 +4,10 @@
 
 
 @section('content')
+@include('partials.sidebarnos')
     <section class="section layout_padding">
         <div class="container">
+            <br> <br>
             <div class="row center">
                 <div class="col-md-8">
                     <div class="card">
@@ -57,5 +59,6 @@
                 </div>
             </div>
         </div>
+<br>
     </section>
 @endsection

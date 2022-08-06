@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_admin')->after('password');
+        Schema::table('categories', function (Blueprint $table) {
+            $table->string('featured_image');
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('is_admin');
+        Schema::table('categories', function (Blueprint $table) {
+            $table->dropColumn('featured_image');
         });
     }
 };

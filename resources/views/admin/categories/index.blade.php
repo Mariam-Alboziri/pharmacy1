@@ -20,7 +20,8 @@
                 <div class="col-md-4">
 
                     <div class="card cardhov my-2">
-                        <img src="/images/hero_1.jpg" width="100%">
+                        <img src="/storage/{{ $category->featured_image }}" width="100%">
+                        {{-- <img src="/images/hero_1.jpg" width="100%"> --}}
                         {{-- {{ $category->getFirstMedia() }} --}}
 
                         <div class="card-body">
