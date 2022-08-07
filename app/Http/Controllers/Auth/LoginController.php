@@ -41,4 +41,13 @@ class LoginController extends Controller
 
         return redirect()->route('home', ['locale' => session('lang', config('app.locale'))]);
     }
+
+    protected function autheticted (){
+        if(Auth::user()->role_as=='1'){
+            return redirect('admin/dashboard')->with('message','Welcome to Dashboard');
+        }
+        else {
+            return  redirect('/')->with('message','Logged In Successfully');
+        }
+    }
 }
