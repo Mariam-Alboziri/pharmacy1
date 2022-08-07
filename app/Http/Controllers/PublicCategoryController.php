@@ -15,7 +15,7 @@ class PublicCategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(2);
+        $categories = Category::paginate(1);
         return view('public.categories.index', compact('categories'));
           }
 
@@ -47,11 +47,26 @@ class PublicCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($category_id)
 
     {
-        // $medicines=Medicine::all();
-        // return view('public.categories.show',compact('category','medicines'));
+
+$category=Category::where('id',$category_id)->first();
+{
+
+
+if($category){
+$medicines = $category->medicines()->get();
+
+return view('admin.categories.show',compact('medicines','category'));
+}
+
+else {
+
+  //  return redirect()->back();
+}
+
+    }
     }
 
     /**
