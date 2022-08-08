@@ -24,7 +24,7 @@
                     <nav class="site-navigation text-right text-md-center" role="navigation">
                         <ul class="site-menu js-clone-nav d-none d-lg-block">
                             {{-- <li class="active"><a href="{{route('home')}}">Home</a></li> --}}
-                            <li class="active"><a href="{{ route('products.list') }}">Store</a></li>
+                            <li class="active"><a href="{{ route('categories.index') }}">Store</a></li>
                             {{-- <li class="has-children">
                                 <a href="#">Products</a>
                                 <ul class="dropdown">

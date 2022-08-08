@@ -24,10 +24,10 @@ return new class extends Migration
             $table->string('billing_address');
             $table->string('billing_email');
             $table->string('billing_phone');
-            $table->string('billing_total');
+          //  $table->string('billing_total');
             $table->string('billing_shipped')->default(false);
             $table->string('billing_notes');
-            $table->string('billing_error')->nullable();
+         //   $table->string('billing_error')->nullable();
 
 
 

@@ -58,12 +58,12 @@ $category=Category::where('id',$category_id)->first();
 if($category){
 $medicines = $category->medicines()->get();
 
-return view('admin.categories.show',compact('medicines','category'));
+return view('public.categories.show',compact('medicines','category'));
 }
 
 else {
 
-  //  return redirect()->back();
+  //
 }
 
     }

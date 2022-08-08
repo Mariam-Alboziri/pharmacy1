@@ -5,12 +5,6 @@
 @section('content')
 @include('partials.sidebarnos')
     <div class="container my-5">
-        {{-- <div class="full">
-            <h1>Here's Your Categories !</h1>
-            <div class="col">
-                @if($categories->count()!=0)<h3><a href="{{ route('admin.categories.create') }}" class="text-primary stretched-link">Add more!</a></h3>@endif
-            </div>
-        </div> --}}
 
         <div class="row">
             @forelse ($categories as $category)
@@ -18,61 +12,16 @@
 
                     <div class="card cardhov my-2">
 
-                        {{-- {{ $category->getFirstMedia() }} --}}
+
 
                         <div class="card-body">
-                            <img src="/images/hero_1.jpg" width="100%">
+                            <img src="/storage/{{ $category->featured_image }}" width="100%">
+                            {{-- <img src="/images/hero_1.jpg" width="100%"> --}}
                             <br> <br>
                             <h3 class="card-title">{{ $category->name }} ({{ $category->medicines->count() }})</h3>
-                            {{-- <p class="card-text">Capacity: {{ $category->capacity }}</p> --}}
-                            <a href="{{ route('categories.show',$category) }}" class="text-primary stretched-link"> show products in Category</a>
-                            {{-- <div class="row my-2">
-                                <div class="col">
-                                    <form action="{{ route('admin.categories.edit', $category) }}" method="PUT"> @csrf
-                                        <button class="btn ma-2" type="submit"
-                                            style="background-color: #161C34; color:white;">Edit</button>
-                                    </form>
-                                </div>
-                                <div class="col">
-                                    <button type="button" class="btn" data-toggle="modal"
-                                        data-target="#delete-modal" style="background-color: #F36B2A; color:white;">
-                                        DELETE
-                                    </button>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="delete-modal" tabindex="-1"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">DELETE THIS CATEGORY
-                                                    </h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    ARE YOU SURE YOU WANT TO DELETE THIS CATEGORY!
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Close</button>
-                                                    <form action="{{ route('admin.categories.destroy', $category) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button style="background-color: #F36B2A; color:white;"
-                                                            class="btn mb-2" type="submit" data-toggle="modal"
-                                                            data-target="#exampleModal">
-                                                            Delete
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
+
+                            <a href="{{ route('categories.show',$category) }}" class="text-primary stretched-link"> Show products in category</a>
+
                         </div>
                     </div>
                 </div>
@@ -82,7 +31,11 @@
                 </div>
             @endforelse
         </div>
-        {{ $categories->links() }}
+        <br> <br>
+        <div class="row justify-content-center">
+
+            {{ $categories->withQueryString() }}
+            </div>
     </div>
 @endsection
 

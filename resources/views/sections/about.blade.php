@@ -9,10 +9,10 @@
             <h1 class="mb-0">About <strong class="text-primary">Pharmative</strong></h1>
             <div class="row justify-content-center mb-5">
               <div class="col-lg-6 text-center">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis ex perspiciatis non quibusdam vel quidem.</p>
+                {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis ex perspiciatis non quibusdam vel quidem.</p> --}}
               </div>
             </div>
-            <p><a href="#" class="btn btn-primary px-5 py-3">Shop Now</a></p>
+            <p><a href="{{ route('categories.store') }}" class="btn btn-primary px-5 py-3">Shop Now</a></p>
           </div>
         </div>
       </div>
@@ -154,9 +154,9 @@
     <div class="container">
       <div class="row justify-content-center text-center">
        <div class="col-lg-7">
-         <h3 class="text-white">Sign up for discount up to 55% OFF</h3>
+         <h3 class="text-white">Register for discount up to 55% OFF</h3>
          <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem consectetur quam.</p>
-         <p class="mb-0"><a href="#" class="btn btn-outline-white">Sign up</a></p>
+         <p class="mb-0"><a href="{{ route('register') }}" class="btn btn-outline-white">Register</a></p>
        </div>
       </div>
     </div>

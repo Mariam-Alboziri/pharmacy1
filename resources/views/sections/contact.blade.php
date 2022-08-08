@@ -1,4 +1,5 @@
-  <!-- section -->
+@include('partials.sidebarnos')
+<!-- section -->
   <div class="bg-light py-3">
     <div class="container">
       <div class="row">
@@ -88,3 +89,4 @@
     </div>
   </form>
 </div>
+    </div>
