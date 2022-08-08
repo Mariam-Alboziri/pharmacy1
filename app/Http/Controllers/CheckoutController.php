@@ -30,8 +30,8 @@ class CheckoutController extends Controller
      */
     public function create()
     {
-        // $cartItems = \Cart::getContent();
-        return view('admin.checkout.create');
+         $cartItems = \Cart::getContent();
+        return view('admin.checkout.create',compact('cartItems'));
     }
 
     /**
@@ -42,33 +42,52 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        $orders = Order::paginate(6);
+        $request->validate([
+        'user_id' => auth()->user() ? auth()->user()->id : null,
+        'billing_fname'          =>$request->fname,
+        'billing_lname'          =>$request->lname,
+        'billing_company_name'   =>$request->company,
+        'billing_address'        =>$request->address,
+        'billing_email'          =>$request->email,
+        'billing_phone'          =>$request->phone,
+       // 'billing_total'          =>null,
+        'billing_notes'          =>$request->note,
 
-      //  dd($orders);
-        $validated = $request->validate([
-            'user_id'                =>auth()->user()? auth()->user()->id : null ,
-            'billing_fname'          =>$request->fname,
-            'billing_lname'          =>$request->lname,
-            'billing_company_name'   =>$request->company,
-            'billing_address'        =>$request->address,
-            'billing_email'          =>$request->email,
-            'billing_phone'          =>$request->phone,
-            'billing_total'          =>null,
-            'billing_notes'          =>$request->note,
-            'billing_error'          =>null,
-        ]);
-        $order = Order::create($validated);
-        // foreach(Cart::content() as $item) {
-        //     MedicineOrder::create([
-        //         'medicine_id' =>$item->model->id,
-        //         'order_id'    =>$order->id,
-        //         'quantity'     =>$item->quantity,
+    ]);
+
+    $data=$request->all();
+    $order=new Order();
+
+    $order->user_id              = $request->user_id ;
+    $order->billing_fname        = $request->fname ;
+    $order->billing_lname        = $request->lname ;
+    $order->billing_company_name = $request->company ;
+    $order->billing_address      = $request->address ;
+    $order->billing_email        = $request->email;
+    $order->billing_phone        = $request->phone ;
+    $order->notes                = $request->note ;
+
+    $order->save();
+
+    return redirect('/thanckyou');
 
 
-        //     ]);
 
-        return redirect()->route('admin.checkout.index');
-        }
+
+
+
+
+
+
+        // MedicineOrder::create([
+        //     'medicine_id' => $item->model->id,
+        //     'order_id'    => $order->id,
+        //     'quantity'    => $item->qty,
+        // ]);
+
+
+    return redirect()->route('thanckyou.index');
+}
 
 
     /**
