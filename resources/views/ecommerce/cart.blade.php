@@ -36,7 +36,7 @@
               {{-- <table class="w-full text-sm lg:text-base" cellspacing="0"> --}}
                 <thead>
                   <tr class="h-12 uppercase">
-                    <th class="product-thumbnail">Image</th>
+
                     <th class="text-left">Name</th>
                     <th class="pl-5 text-left lg:text-right lg:pl-0">
                       <span class="lg:hidden" title="Quantity">Qtd</span>
@@ -49,11 +49,7 @@
                 <tbody>
                     @foreach ($cartItems as $item)
                   <tr>
-                    <td class="hidden pb-4 md:table-cell">
-                      <a href="#">
-                        <img src="{{ $item->attributes->image }}" class="w-20 rounded" alt="Thumbnail">
-                      </a>
-                    </td>
+
                     <td>
                       <a href="#">
                         <p class="mb-2 md:ml-4">{{ $item->name }}</p>

@@ -1,12 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title', 'create User')
 
 @section('content')
-@include('partials.sidebarnos')
+
     <section class="section py-10" style="padding-bottom: 50px">
         <div class="container my-5">
-            <form action="{{ route('admin.users.store') }}" method="POST">
+            <form action="{{ route('admin.users.store') }}" method="POST" enctype="multipart/form-data>
                 @csrf
                 <div class="row">
                     <div class="col">
@@ -60,6 +60,14 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="featured_image">Featured Image</label>
+                        <input type="file" class="form-control @error('featured_image') is-invalid @enderror"
+                        name="featured_image" id="featured_image" accept="image/*" rows="5"> {{ old('featured_image') }}</textarea>
+                        @error('featured_image')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <button type="submit" class="btn" style="background-color: #F36B2A; color:white;">Submit</button>

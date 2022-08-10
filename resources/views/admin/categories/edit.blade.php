@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('title', 'Edit category | ' . $category->name )
 @section('content')
 
-@include('partials.sidebarnos')
+
 <br>
     <section class="section py-10" style="padding-bottom: 50px">
         <div class="container">

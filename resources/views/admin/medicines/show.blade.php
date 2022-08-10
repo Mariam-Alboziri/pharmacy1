@@ -1,16 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
-@section('title', $medicine->brand . ' ' . $medicine->name)
+@section('title',  $medicine->name)
 
 @section('content')
 
-@include('partials.sidebarnos')
+
 
 <div class="bg-light py-3">
     <div class="container">
       <div class="row">
-        <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <a
-            href="shop.html">Store</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">{{ $medicine->name }}</strong></div>
+        <div class="col-md-12 mb-0"><a href="{{ route('home') }}">Home</a> <span class="mx-2 mb-0">/</span> <a
+            href="{{ route('medicines.index') }}">Store</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">{{ $medicine->name }}</strong></div>
       </div>
     </div>
   </div>
@@ -33,7 +33,7 @@
 
 
           <div class="mb-5">
-            <div class="input-group mb-3" style="max-width: 220px;">
+            {{-- <div class="input-group mb-3" style="max-width: 220px;">
               <div class="input-group-prepend">
                 <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
               </div>
@@ -42,22 +42,21 @@
               <div class="input-group-append">
                 <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
               </div>
-            </div>
+            </div> --}}
 
           </div>
           {{-- <p><a href="cart.html" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Add To Cart</a></p> --}}
 
 
-          <form action="{{ route('cart.store') }}" method="POST">
-            {{ csrf_field() }}
-            <input type="hidden" name="id" value="{{ $medicine->id }}">
-            <input type="hidden" name="nsme" value="{{ $medicine->name }}">
-            <input type="hidden" name="price" value="{{ $medicine->price }}">
+          <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+
+            <input type="hidden" value="{{ $medicine->id }}" name="id">
+            <input type="hidden" value="{{ $medicine->name }}" name="name">
+            <input type="hidden" value="{{ $medicine->price }}" name="price">
+            <input type="hidden" value="{{ $medicine->featured_image }}"  name="image">
             <input type="hidden" value="1" name="quantity">
-            <button type="submit" class="button button-plain"> Add to Cart</button>
-
-
-
+            <button class="btn btn-primary btn-lgrounded">Add To Cart</button>
 
 </form>
 
@@ -141,9 +140,9 @@
     <div class="container">
       <div class="row justify-content-center text-center">
        <div class="col-lg-7">
-         <h3 class="text-white">Sign up for discount up to 55% OFF</h3>
+         <h3 class="text-white">Register for discount up to 55% OFF</h3>
          <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem consectetur quam.</p>
-         <p class="mb-0"><a href="#" class="btn btn-outline-white">Sign up</a></p>
+         <p class="mb-0"><a href="{{ route('register') }}" class="btn btn-outline-white">Register</a></p>
        </div>
       </div>
     </div>

@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title','Messages')
 
 @section('content')
-@include('partials.sidebarnos')
+
     <section class="section layout_padding">
         <div class="container">
             <br>

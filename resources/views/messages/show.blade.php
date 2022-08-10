@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title', 'Messages' . ' - ' . $message->name)
 
 @section('content')
-@include('partials.sidebarnos')
+
     <section>
         <div class="container">
             <br>

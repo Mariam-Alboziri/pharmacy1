@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title', 'Categories')
 
 @section('content')
 
-@include('partials.sidebarnos')
+
 
 <br>
     <div class="container my-5">

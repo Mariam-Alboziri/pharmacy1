@@ -105,7 +105,7 @@ Route::resource('medicines' , MedicineController::class);
 Route::resource('categories',CategoryController::class);
 Route::resource('users', UserController::class);
 
-Route::get('dashboard' ,[DashboardController::class,'index']);
+Route::get('dashboard' ,[DashboardController::class,'index'])->name('dashboard');
 
 
 });

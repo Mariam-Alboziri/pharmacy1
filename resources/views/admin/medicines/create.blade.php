@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title', 'Add a new product')
 
@@ -28,7 +28,7 @@
 @endpush --}}
 
     @section('content')
-    @include('partials.sidebarnos')
+
     <section class="section py-10" style="padding-bottom: 50px">
     <div class="container my-5">
         <form action="{{ route('admin.medicines.store') }}" method="POST" enctype="multipart/form-data">

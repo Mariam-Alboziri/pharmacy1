@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title', 'Edit User')
 
 @section('content')
-@include('partials.sidebarnos')
+
     <section class="section py-10" style="padding-bottom: 50px">
         <div class="container my-5">
             <form action="{{ route('admin.users.update' ,$user) }}" method="POST">

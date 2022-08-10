@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title', $category->name)
 
 @section('content')
-@include('partials.sidebar')
+
     <div class="container my-5">
         <div class="full">
             <h1>Here's your categories !</h1> <br>

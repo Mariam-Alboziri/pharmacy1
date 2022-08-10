@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title', 'Add a new category')
 
 @section('content')
-@include('partials.sidebarnos')
+
 <br>
     <section class="section py-10" style="padding-bottom: 50px">
         <div class="container">
