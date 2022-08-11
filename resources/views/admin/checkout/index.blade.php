@@ -3,7 +3,7 @@
 @section('title','Orders')
 
 @section('content')
-@include('partials.sidebarnos')
+
     <section class="section layout_padding">
         <div class="container">
             <br>

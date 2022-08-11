@@ -42,37 +42,19 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-        'user_id' => auth()->user() ? auth()->user()->id : null,
-        'billing_fname'          =>$request->fname,
-        'billing_lname'          =>$request->lname,
-        'billing_company_name'   =>$request->company,
-        'billing_address'        =>$request->address,
-        'billing_email'          =>$request->email,
-        'billing_phone'          =>$request->phone,
+$validated = $request->validate([
+        'user_id'                => auth()->user() ? auth()->user()->id : null,
+        'billing_fname'          =>'required',
+        'billing_lname'          =>'required',
+        'billing_company_name'   =>'required',
+        'billing_address'        =>'required',
+        'billing_email'          =>'required',
+        'billing_phone'          =>'required',
        // 'billing_total'          =>null,
-        'billing_notes'          =>$request->note,
+        'billing_notes'          =>'required',
 
     ]);
-
-    $data=$request->all();
-    $order=new Order();
-
-    $order->user_id              = $request->user_id ;
-    $order->billing_fname        = $request->fname ;
-    $order->billing_lname        = $request->lname ;
-    $order->billing_company_name = $request->company ;
-    $order->billing_address      = $request->address ;
-    $order->billing_email        = $request->email;
-    $order->billing_phone        = $request->phone ;
-    $order->notes                = $request->note ;
-
-    $order->save();
-
-    return redirect('/thanckyou');
-
-
-
+$order=Order::create($validated);
 
 
 

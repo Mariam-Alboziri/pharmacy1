@@ -18,8 +18,8 @@ class Order extends Model
 }
 
 
-public function medicines() {
-    return $this->belongsToMany(Medicine::class)->withPivot('quantity');
- }
+// public function medicines() {
+//     return $this->belongsToMany(Medicine::class)->withPivot('quantity');
+//  }
 
 }
