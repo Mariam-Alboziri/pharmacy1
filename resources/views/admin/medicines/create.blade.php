@@ -44,18 +44,7 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="brand">Company</label>
-                        <input type="text" class="form-control @error('brand') is-invalid @enderror" id="brand" name="brand"
-                            placeholder="" value="{{ old('brand') }}">
-                        @error('brand')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
             </div>
-
             <div class="row">
                 <div class="col">
                     <div class="form-group">
@@ -69,6 +58,22 @@
                             @endforeach
                         </select>
                         @error('category_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label>Product company</label>
+                        <select name="company_id" class="form-control @error('company_id') is-invalid @enderror">
+                            @foreach ($companies as $company)
+                                <option value="{{ $company->id }}"
+                                    {{ old('company_id') == $company->id ? 'selected' : '' }}>{{ $company->name }}
+
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('company_id')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
