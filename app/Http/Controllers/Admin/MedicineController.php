@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Company;
 use App\Models\Medicine;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,9 @@ class MedicineController extends Controller
 
 
         $categories=Category::all(['id','name']);
-        $medicines=Medicine::latest()->paginate(3);
+
+        $companies=Company::all(['id','name']);
+        $medicines=Medicine::latest()->paginate(12);
         return view('admin.medicines.index')->with('medicines',$medicines);
         // return view('admin.medicines.index',compact('medicines'));
 
@@ -52,10 +55,12 @@ class MedicineController extends Controller
     public function create()
     {
         $categories=Category::all(['id','name']);
+
+        $companies=Company::all(['id','name']);
         session()->flash('message','The product was added successfully');
         session()->flash('message-type','success');
 
-        return view('admin.medicines.create',compact('categories'));
+        return view('admin.medicines.create',compact('categories','companies'));
     }
 
     /**
@@ -70,8 +75,8 @@ class MedicineController extends Controller
       $validated = $request->validate([
         'name'        =>'required',
         // 'type'        =>'required',
-        'brand'       =>'required',
         'category_id' =>'required|numeric|exists:categories,id',
+        'company_id' =>'required|numeric|exists:companies,id',
         'price'       =>'required|numeric|min:100',
         'description' =>'required',
         'featured_image'=>'required|file|image',
@@ -117,7 +122,9 @@ class MedicineController extends Controller
     {
 
         $categories=Category::all(['id','name']);
-        return view('admin.medicines.edit',compact('medicine','categories'));
+
+        $companies=Company::all(['id','name']);
+        return view('admin.medicines.edit',compact('medicine','categories','companies'));
     }
 
     /**
@@ -132,8 +139,8 @@ class MedicineController extends Controller
       $validated=  $request->validate([
             'name'        =>'required',
             // 'type'        =>'required',
-            'brand'       =>'required',
             'category_id' =>'required',
+            'company_id' =>'required|numeric|exists:companies,id',
             'price'       =>'required|numeric|min:100',
             'description' =>'required|string',
             ]);
