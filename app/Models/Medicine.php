@@ -33,6 +33,11 @@ class Medicine extends Model
         return $this->belongsTo(Category::class,'category_id','id');
     }
 
+    public function company()
+    {
+        return $this->belongsTo(Company::class,'company_id','id');
+    }
+
     public function orders() {
         return $this->belongsToMany(Order::class);
      }
