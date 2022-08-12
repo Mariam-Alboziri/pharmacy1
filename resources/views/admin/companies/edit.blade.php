@@ -1,0 +1,44 @@
+@extends('layouts.admin')
+@section('title', 'Edit company | ' . $company->name )
+@section('content')
+
+
+<br>
+    <section class="section py-10" style="padding-bottom: 50px">
+        <div class="container">
+            <form action="{{ route('admin.companies.update', $company) }}" method="POST">
+                @csrf
+                @method('put')
+                <div class="form-group">
+                    <label  class="col-md-6"   for="name">Name</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror col-md-6" id="name"
+                        name="name" value="{{ old('name',$company->name )}}" placeholder="">
+                    @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+{{--
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">SYP</span>
+                        </div>
+                        <input name="price" id="price" type="number" min="100"
+                            value="{{ old('price',$company->price) }}"step="50"
+                            class="form-control @error('price') is-invalid @enderror">
+                    </div>
+                    @error('price')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div> --}}
+
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </section>
+    </div>
+@endsection

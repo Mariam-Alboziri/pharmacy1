@@ -9,8 +9,10 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\BillingController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ConfirmationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MariamController;
@@ -66,7 +68,7 @@ Route::get('empty',function(){
 
 
 Route::resource('profile',UsersController::class)->middleware('auth');
-
+Route::resource('billings',BillingController::class);
 
 
 
@@ -104,6 +106,8 @@ Route::delete('messages/{message}', [MessageController::class, 'destroy'])->name
 Route::resource('medicines' , MedicineController::class);
 Route::resource('categories',CategoryController::class);
 Route::resource('users', UserController::class);
+Route::resource('companies',CompanyController::class);
+Route::resource('billings',BillingController::class);
 
 Route::get('dashboard' ,[DashboardController::class,'index'])->name('dashboard');
 
