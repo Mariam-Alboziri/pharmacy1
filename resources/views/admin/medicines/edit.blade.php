@@ -24,7 +24,7 @@
 @endpush --}}
 
 @section('content')
-@include('partials.sidebarnos')
+
     <section class="section py-10" style="padding-bottom: 50px">
         <div class="container">
             <form action="{{ route('admin.medicines.update', $medicine) }}" method="POST">

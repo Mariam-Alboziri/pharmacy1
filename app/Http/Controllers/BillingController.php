@@ -48,7 +48,7 @@ class BillingController extends Controller
         ]);
         $billing=Billing::create($validated);
 
-        return redirect()->route('admin.billings.index');
+        return redirect()->route('billings.index');
 
     }
 

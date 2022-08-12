@@ -5,14 +5,16 @@
 @section('content')
 
     <section>
-        <div class="container my-5">
-            <div class="card my-2 shadow bg-white rounded">
+        <div class="container">
+            <div class="card  shadow bg-white rounded">
+
                 <div class="card-body">
+
                     <h1 class="card-title"> {{ $user->name }} </h1>
                 </div>
             </div>
             <div class="card mb-3">
-                <img src="{{ $user->featured_image }}" class="card-img-top" alt="..." height="400">
+                <img src="/images/user.png" width="30%">
                 <div class="card-body">
                     <h1 class="card-title text-primary"> Basic Info </h1>
                     <p class="card-text">

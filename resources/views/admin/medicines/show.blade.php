@@ -6,14 +6,14 @@
 
 
 
-<div class="bg-light py-3">
-    <div class="container">
+{{-- <div class="bg-light py-3"> --}}
+    {{-- <div class="container">
       <div class="row">
         <div class="col-md-12 mb-0"><a href="{{ route('home') }}">Home</a> <span class="mx-2 mb-0">/</span> <a
-            href="{{ route('medicines.index') }}">Store</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">{{ $medicine->name }}</strong></div>
+            href="{{ route('admin.medicines.index') }}">Store</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">{{ $medicine->name }}</strong></div>
       </div>
     </div>
-  </div>
+  </div> --}}
 
   <div class="site-section">
     <div class="container">
@@ -56,7 +56,7 @@
             <input type="hidden" value="{{ $medicine->price }}" name="price">
             <input type="hidden" value="{{ $medicine->featured_image }}"  name="image">
             <input type="hidden" value="1" name="quantity">
-            <button class="btn btn-primary btn-lgrounded">Add To Cart</button>
+            {{-- <button class="btn btn-primary btn-lgrounded">Add To Cart</button> --}}
 
 </form>
 
@@ -135,7 +135,7 @@
       </div>
     </div>
   </div>
-
+{{--
   <div class="site-section bg-image overlay" style="background-image: url('images/hero_bg_2.jpg');">
     <div class="container">
       <div class="row justify-content-center text-center">
@@ -146,5 +146,5 @@
        </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 @endsection

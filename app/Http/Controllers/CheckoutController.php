@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Billing;
 use App\Models\MedicineOrder;
 use App\Models\Order;
 use Darryldecode\Cart\Cart;
@@ -50,22 +51,10 @@ $validated = $request->validate([
         'billing_address'        =>'required',
         'billing_email'          =>'required',
         'billing_phone'          =>'required',
-       // 'billing_total'          =>null,
         'billing_notes'          =>'required',
 
     ]);
-$order=Order::create($validated);
-
-
-
-
-
-
-        // MedicineOrder::create([
-        //     'medicine_id' => $item->model->id,
-        //     'order_id'    => $order->id,
-        //     'quantity'    => $item->qty,
-        // ]);
+$billing=Billing::create($validated);
 
 
     return redirect()->route('thanckyou.index');

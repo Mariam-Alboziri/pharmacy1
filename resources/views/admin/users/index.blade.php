@@ -17,8 +17,7 @@
                 <div class="col-md-4">
                     <div class="card cardhov my-2">
                         <img class="card-img-top"
-                         src="/storage/{{ $category->featured_image }}" width="100%">
-                            alt="Card image cap">
+                         src="/images/user.png" width="100%">
                         <div class="card-body">
                             <h5 class="card-title">{{ $user->name }}</h5>
                             <a href="{{ route('admin.users.show', $user) }}" class="text-primary stretched-link"> show more

@@ -1,9 +1,9 @@
-@extends('layouts.admin')
+@extends('layouts.nofooter')
 
 @section('title', 'medicines')
 
 @section('content')
-
+@include('partials.sidebarnos')
     <div class="container my-5">
         <div class="full">
             <h1>Here's your products !</h1> <br>
@@ -51,7 +51,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    ARE YOU SURE YOU WANT TO DELETE THIS MEDICINE!
+                                                    ARE YOU SURE YOU WANT TO DELETE THIS PRODUCT!
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"

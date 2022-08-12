@@ -27,7 +27,7 @@
           </div>
           <div class="row">
             <div class="col-md-6 mb-5 mb-md-0">
-                <form action="{{ route('checkout.store') }}" method="POST">
+                <form action="{{ route('billings.store') }}" method="POST">
                     @csrf
 
                   <h2 class="h3 mb-3 text-black">Billing Details</h2>

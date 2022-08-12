@@ -49,6 +49,7 @@ Route::view('/contact-us','pages.contact')->name('contact');
 Route::view('/about','pages.about')->name('about');
 
 
+
 Route::get('/products', [PublicMedicineController::class, 'index'])->name('products.list');
 Route::get('/cart', [RehamController::class, 'cartList'])->name('cart.list');
 Route::post('/cart', [RehamController::class, 'addToCart'])->name('cart.store');
@@ -68,7 +69,7 @@ Route::get('empty',function(){
 
 
 Route::resource('profile',UsersController::class)->middleware('auth');
-Route::resource('billings',BillingController::class);
+
 
 
 
@@ -107,7 +108,9 @@ Route::resource('medicines' , MedicineController::class);
 Route::resource('categories',CategoryController::class);
 Route::resource('users', UserController::class);
 Route::resource('companies',CompanyController::class);
+
 Route::resource('billings',BillingController::class);
+
 
 Route::get('dashboard' ,[DashboardController::class,'index'])->name('dashboard');
 

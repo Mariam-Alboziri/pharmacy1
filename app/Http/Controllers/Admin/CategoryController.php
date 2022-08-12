@@ -102,13 +102,15 @@ else {
      */
     public function update(Request $request, Category $category)
     {
-        // $validate= $request->validate([
-        //     'name'=>'required|min:3|max:255',
-        //     // 'price'=>'required|numeric|min:100',
-        // ]);
-        // $category=Category::create($validate);
-       // return redirect()->route('admin.categories.index');
-       $category->update($request->validated());
+        $validated=  $request->validate([
+
+            'name'=>'required|min:3|max:255',
+            'featured_image'=>'required|file|image',
+
+
+        ]);
+
+        $category->update($validated);
 
        return redirect()->route('admin.categories.index');
     }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.nofooter')
 
 @section('title', 'Contact')
 
